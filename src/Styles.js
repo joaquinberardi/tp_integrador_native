@@ -6,8 +6,14 @@ const styles = StyleSheet.create({
       marginTop: 24,
     },
     drawer: {
-        backgroundColor: "#0000"
-    },
+      backgroundColor: '#FAFAFA',
+      width: 300,
+   },
+    draweritem: {
+     //activeTintColor: "#C62828",
+     fontSize: 30,
+     //labelStyle: {fontSize:30, fontWeight: 'bold'},
+   },
     input: {
       height: 40,
       margin: 14,
@@ -38,7 +44,7 @@ const styles = StyleSheet.create({
     h1:{
       fontSize: 30,
       margin: 12,
-    }
+      fontWeight: "bold"}
   });
 
   export {styles};

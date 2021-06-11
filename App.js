@@ -20,7 +20,17 @@ class App extends Component {
   render() {
     return(
       <NavigationContainer>
-      <Drawer.Navigator drawerStyle={styles.Drawer}>
+      <Drawer.Navigator 
+        drawerStyle={{
+          backgroundColor: '#FAFAFA',
+          width: 300,
+       }}
+       drawerContentOptions={{
+         activeTintColor: "#C62828",
+         fontSize: 30,
+         labelStyle: {fontSize:30, fontWeight: 'bold'}
+       }}
+       >
         <Drawer.Screen name="Inicio" component={Screen_Inicio} />
         <Drawer.Screen name="Screen 2" component={Screen_1} />
       </Drawer.Navigator>

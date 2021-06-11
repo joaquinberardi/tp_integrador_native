@@ -3,10 +3,13 @@ import {
     View,
     Text,
     FlatList,
-    ActivityIndicator,
     Modal,
     Button,
 } from 'react-native';
+
+import {styles} from '../src/Styles';
+
+
 import {getData} from '../api/RandomUser';
 
 export class Screen_Inicio extends Component {
@@ -39,7 +42,7 @@ export class Screen_Inicio extends Component {
         return(
         <View>
             <View>
-                <Text> HEADER </Text>
+                <Text style= {styles.h1}> Mis contactos </Text>
             </View>
 
             <FlatList
@@ -48,7 +51,7 @@ export class Screen_Inicio extends Component {
             renderItem= { this.renderItem }
             />
 
-            <Modal
+            {/* <Modal
             visible= {this.state.showModal}
             >
                 <View>
@@ -57,7 +60,7 @@ export class Screen_Inicio extends Component {
                 </View>
             </Modal>
 
-            <Button title="Show Modal" onPress={ () => this.setState({showModal: True})}> </Button>
+            <Button title="Show Modal" onPress={ () => this.setState({showModal: True})}> </Button> */}
         </View>
     )}
 }
