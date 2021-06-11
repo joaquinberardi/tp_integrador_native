@@ -1,33 +1,40 @@
 import React, { Component } from 'react';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {styles} from '../src/Styles';
+
 import {
     View,
     Text,
     FlatList,
     Modal,
     Button,
+    TextInput,
+    TouchableOpacity
 } from 'react-native';
 
-import {styles} from '../src/Styles';
+import {ListadeContactos} from '../Components/ListadeContactos';
 
 
-import {getData} from '../api/RandomUser';
+import {getAPI} from '../api/RandomUser';
+import {saveLocal} from '../api/saveLocal';
+import {getLocal} from '../api/getLocal';
+
 
 export class Screen_Inicio extends Component {
     constructor(){
         super();
         this.state = {
             users:[],
-            showModal: false
+            cantHandler: "",
         }
     }
 
     componentDidMount(){
-        getData()
+        getAPI()
         .then( (usuarios) => {
             this.setState({users: usuarios});
         })
-    }
-
+    };
 
     renderItem =({item}) => {
         return(
@@ -42,14 +49,26 @@ export class Screen_Inicio extends Component {
         return(
         <View>
             <View>
-                <Text style= {styles.h1}> Mis contactos </Text>
+                <Text style= {styles.h1}> Mis contactosssss </Text>
             </View>
 
-            <FlatList
+            <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
+            <TouchableOpacity style={styles.boton} onPress={ () => this.setState({cant: this.state.cantHandler})}>
+                <View>
+                    <Text style={styles.botonText}>Agregar</Text>
+                </View>
+            </TouchableOpacity>
+
+
+            <ListadeContactos/>
+
+            {/* <FlatList
             data = { this.state.users }
             keyExtractor= { this.keyExtractor }
             renderItem= { this.renderItem }
-            />
+            /> */}
+
+            <Button title="Guardar contactos"></Button>
 
             {/* <Modal
             visible= {this.state.showModal}
