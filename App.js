@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import {styles} from './src/Styles';
 
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,8 +20,7 @@ class App extends Component {
   render() {
     return(
       <NavigationContainer>
-      <Drawer.Navigator drawerStyle={{
-    backgroundColor: '#c6cbef'}}>
+      <Drawer.Navigator drawerStyle={styles.Drawer}>
         <Drawer.Screen name="Inicio" component={Screen_Inicio} />
         <Drawer.Screen name="Screen 2" component={Screen_1} />
       </Drawer.Navigator>

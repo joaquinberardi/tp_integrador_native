@@ -1,0 +1,1 @@
+// Este componente debera mostrar los contactos que recibe por prop, ya sean de local o la API
