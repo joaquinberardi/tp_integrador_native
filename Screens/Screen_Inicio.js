@@ -9,7 +9,8 @@ import {
     Modal,
     Button,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    Image,
 } from 'react-native';
 
 import {ListadeContactos} from '../Components/ListadeContactos';
@@ -48,13 +49,19 @@ export class Screen_Inicio extends Component {
     render() {
         return(
         <View>
-            <View>
-                <Text style= {styles.h1}> Mis contactosssss </Text>
+
+            <View style= {styles.header}>
+                <TouchableOpacity>
+                             <Text>           </Text> 
+                            <Image source={require('../src/Icons/BurgerIcon.png')}  style={styles.burgerIcon}/>
+                            {/* No se ve sin el Text */}
+                </TouchableOpacity>
+                <Text style= {styles.h1header}> Mis contactos</Text>
             </View>
 
             <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
-            <TouchableOpacity style={styles.boton} onPress={ () => this.setState({cant: this.state.cantHandler})}>
-                <View>
+            <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
+                <View style={styles.boton}>
                     <Text style={styles.botonText}>Agregar</Text>
                 </View>
             </TouchableOpacity>
