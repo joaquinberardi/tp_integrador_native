@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
       includeFontPadding: false,
       color: "#808080",
       shadowColor: "#000",
-      shadowOpacity: 0.22,
+      shadowOpacity: 0.3,
       shadowRadius: 2.22,
       elevation: 3,
     },
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
       marginHorizontal: 14,
       paddingVertical: 16,
       shadowColor: "#000",
-      shadowOpacity: 0.22,
+      shadowOpacity: 0.3,
       shadowRadius: 2.22,
       elevation: 3,
     },
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
       height: 56,
       backgroundColor: "#B71C1C",
       shadowColor: "#000",
-      shadowOpacity: 0.22,
+      shadowOpacity: 0.3,
       shadowRadius: 2.22,
       elevation: 3,
     },
@@ -82,6 +82,26 @@ const styles = StyleSheet.create({
     },
     burgerIcon:{
       height: 30,
+    },
+    listViewContainer:{
+      margin: 14,
+      shadowColor: "#000",
+      shadowOpacity: 0.3,
+      shadowRadius: 2.22,
+      elevation: 3,
+    },
+    listViewHeader:{
+        paddingHorizontal: 14,
+        flex: 1,
+        flexDirection: "row",
+        height: 56,
+        borderTopLeftRadius: 4,
+        borderTopRightRadius: 4,
+        backgroundColor: "#B71C1C",
+        shadowColor: "#000",
+        shadowOpacity: 0.3,
+        shadowRadius: 2.22,
+        elevation: 3,
     }
   });
 

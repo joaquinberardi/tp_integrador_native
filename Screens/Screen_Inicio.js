@@ -56,7 +56,7 @@ export class Screen_Inicio extends Component {
                             <Image source={require('../src/Icons/BurgerIcon.png')}  style={styles.burgerIcon}/>
                             {/* No se ve sin el Text */}
                 </TouchableOpacity>
-                <Text style= {styles.h1header}> Mis contactos</Text>
+                <Text style= {styles.h1header}> Agenda de contactos</Text>
             </View>
 
             <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
@@ -67,7 +67,7 @@ export class Screen_Inicio extends Component {
             </TouchableOpacity>
 
 
-            <ListadeContactos/>
+            <ListadeContactos />
 
             {/* <FlatList
             data = { this.state.users }

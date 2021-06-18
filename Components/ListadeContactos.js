@@ -39,12 +39,18 @@ export class ListadeContactos extends Component {
 
     render() {
         return(
-        <View>
-            <FlatList
-            data = { this.state.users }
-            keyExtractor= { this.keyExtractor }
-            renderItem= { this.renderItem }
-            />
+        <View style={styles.listViewContainer}>
+            <View >
+
+                <View style={styles.listViewHeader}>
+                    <Text style={styles.h1header}> Mis contactos </Text>
+                </View>
+                <FlatList
+                data = { this.state.users }
+                keyExtractor= { this.keyExtractor }
+                renderItem= { this.renderItem }
+                />
+            </View>
 
             {/* <Modal
             visible= {this.state.showModal}
