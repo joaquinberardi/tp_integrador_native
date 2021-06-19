@@ -5,39 +5,43 @@ import {
     View,
     Text,
     FlatList,
+    Image,
+    TouchableOpacity,
+    Modal,
+    Button,
 } from 'react-native';
 
 import {styles} from '../src/Styles';
 
-
-import {getAPI} from '../api/RandomUser';
-
 export class ListadeContactos extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            users:[],
-        }
+            users: props.usuarios,
+        };
     }
 
-    componentDidMount(){
-        getAPI()
-        .then( (usuarios) => {
-            this.setState({users: usuarios});
-        })
-    }
-
+    // showModal = ({item}) => {
+    //     this.setState({selectedItem: item, showModal: true})
+    // }
 
     renderItem =({item}) => {
         return(
-        <View>
-            <Text> {item.name.last}, {item.name.first} </Text>
-        </View>
+        <TouchableOpacity>
+            <View>
+                {/* <Text> {item.name.last}, {item.name.first} </Text> */}
+            </View>
+        </TouchableOpacity>
+
         )};
 
     keyExtractor= (item,idx) => idx.toString();
 
+
+
     render() {
+        console.log(this.state.users);
+
         return(
         <View style={styles.listViewContainer}>
             <View >
@@ -52,16 +56,11 @@ export class ListadeContactos extends Component {
                 />
             </View>
 
-            {/* <Modal
-            visible= {this.state.showModal}
-            >
-                <View>
-                    <Text> MODAL </Text>
-
-                </View>
+            {/* <Modal visible= {this.state.showModal}>
+                    <Text> pepe </Text>
             </Modal>
+            <TouchableOpacity title="Show Modal" onPress={ () => this.setState({showModal: !this.state.showModal})}> Show Modal </TouchableOpacity>  */}
 
-            <Button title="Show Modal" onPress={ () => this.setState({showModal: True})}> </Button> */}
         </View>
     )}
 }

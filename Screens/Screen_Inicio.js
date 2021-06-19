@@ -25,18 +25,26 @@ export class Screen_Inicio extends Component {
     constructor(){
         super();
         this.state = {
-            users:[],
             cantHandler: "",
+            users: [],
         }
     }
 
     componentDidMount(){
-        getAPI()
+        getAPI(10)
         .then( (usuarios) => {
             this.setState({users: usuarios});
         })
-    };
+    }
 
+    addContacts = (n) => {
+        getAPI(n)
+        .then( (usuarios) => {
+            usuarios = this.state.users.concat(usuarios)
+            this.setState({users: usuarios});
+        })
+    }
+    
     renderItem =({item}) => {
         return(
         <View>
@@ -47,9 +55,9 @@ export class Screen_Inicio extends Component {
     keyExtractor= (item,idx) => idx.toString();
 
     render() {
+        console.log(this.state.users);
         return(
         <View>
-
             <View style= {styles.header}>
                 <TouchableOpacity>
                              <Text>           </Text> 
@@ -60,23 +68,22 @@ export class Screen_Inicio extends Component {
             </View>
 
             <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
+            
             <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
                 <View style={styles.boton}>
-                    <Text style={styles.botonText}>Agregar</Text>
+                    <Text style={styles.botonText} onPress= { () => this.addContacts(this.state.cantHandler)} >Agregar</Text>
                 </View>
             </TouchableOpacity>
 
+            <ListadeContactos usuarios={this.state.users} />
+            {console.log(this.state.users)}
 
-            <ListadeContactos />
 
-            {/* <FlatList
-            data = { this.state.users }
-            keyExtractor= { this.keyExtractor }
-            renderItem= { this.renderItem }
-            /> */}
-
-            <Button title="Guardar contactos"></Button>
-
+            <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
+                <View style={styles.boton}>
+                    <Text style={styles.botonText}>Guardar contactos</Text>
+                </View>
+            </TouchableOpacity>
             {/* <Modal
             visible= {this.state.showModal}
             >

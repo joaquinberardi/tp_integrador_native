@@ -1,10 +1,6 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    view: {
-      margin: 12,
-      marginTop: 24,
-    },
     drawer: {
       backgroundColor: '#FAFAFA',
       width: 300,
@@ -59,7 +55,8 @@ const styles = StyleSheet.create({
     h1:{
       fontSize: 30,
       margin: 12,
-      fontWeight: "bold"},
+      fontWeight: "bold"
+    },
     header:{
       paddingHorizontal: 14,
       flex: 1,
@@ -93,6 +90,8 @@ const styles = StyleSheet.create({
     listViewHeader:{
         paddingHorizontal: 14,
         flex: 1,
+        justifyContent: "center",
+        textAlign: "center",
         flexDirection: "row",
         height: 56,
         borderTopLeftRadius: 4,
