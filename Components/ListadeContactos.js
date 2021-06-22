@@ -26,8 +26,10 @@ export class ListadeContactos extends Component {
 
     renderItem =({item}) => {
         return(
-            <View>
+            <View style={styles.listCard}>
+                <Image style= {styles.listImage} source={{uri: item.picture.thumbnail}}/>
                 <Text> {item.name.last}, {item.name.first} </Text>
+                <Text> {item.dob.age}</Text>
             </View>
 
         )};
@@ -48,6 +50,8 @@ export class ListadeContactos extends Component {
                 data = { this.props.usuarios }
                 keyExtractor= { this.keyExtractor }
                 renderItem= { this.renderItem }
+                contentContainerStyle= {styles.listContent}
+                numColumns= {2}
                 />
             </View>
 

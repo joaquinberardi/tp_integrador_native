@@ -110,6 +110,27 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 2.22,
         elevation: 3,
+    },
+    listContent:{
+      flex:1,
+      flexWrap: "wrap",
+      flexDirection: "row",
+      backgroundColor: "blue",
+      justifyContent:'center',
+      alignItems:'center',
+    },
+    listCard:{
+      margin:5,
+      height: 200,
+      width: 165,
+      backgroundColor: "red",
+      borderRadius: 4,
+    },
+    listImage:{
+      borderTopEndRadius:4,
+      borderTopLeftRadius:4,
+      width: "100%",
+      height: 80,
     }
   });
 
