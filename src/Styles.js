@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
    },
     draweritem: {
      //activeTintColor: "#C62828",
-     fontSize: 30,
+     fontSize: 25,
      //labelStyle: {fontSize:30, fontWeight: 'bold'},
    },
     input: {
@@ -49,6 +49,12 @@ const styles = StyleSheet.create({
       color: "#FFFFFF",
       fontWeight: "bold",
     },
+    integrante:{
+      fontSize: 25,
+      justifyContent: "center",
+      textAlign: "center",
+      lineHeight: 50,
+    },
     p: {
       fontSize: 18,
     },
@@ -58,10 +64,9 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
     header:{
-      paddingHorizontal: 14,
       flex: 1,
       flexDirection: "row",
-      height: 56,
+      alignItems: 'center',
       backgroundColor: "#B71C1C",
       shadowColor: "#000",
       shadowOpacity: 0.3,
@@ -69,16 +74,20 @@ const styles = StyleSheet.create({
       elevation: 3,
     },
     h1header:{
-      fontSize: 30,
+      fontSize: 28,
       margin: 12,
       fontWeight: "bold",
       color: "#FFFFFF",
     },
-    burgerContainer:{
-
+    burgerButton:{
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 56,
+      height: 56,
     },
-    burgerIcon:{
-      height: 30,
+    IconBurger:{
+      height: 45,
+      width: 45,
     },
     listViewContainer:{
       margin: 14,

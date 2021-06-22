@@ -8,8 +8,10 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import {Screen_Inicio} from './Screens/Screen_Inicio';
-import {Screen_1} from './Screens/Screeen_1';
+import {MisContactos} from './Screens/MisContactos';
+import {ImportarContactos} from './Screens/ImportarContactos';
+import {PapeleraDeReciclaje} from './Screens/PapeleraDeReciclaje';
+import {AcercaDe} from './Screens/AcercaDe';
 
 
 
@@ -27,12 +29,13 @@ class App extends Component {
        }}
        drawerContentOptions={{
          activeTintColor: "#C62828",
-         fontSize: 30,
-         labelStyle: {fontSize:30, fontWeight: 'bold'}
+         labelStyle: {fontSize:22, fontWeight: 'bold'}
        }}
        >
-        <Drawer.Screen name="Inicio" component={Screen_Inicio} />
-        <Drawer.Screen name="Screen 2" component={Screen_1} />
+        <Drawer.Screen name="Mis contactos" component={MisContactos} />
+        <Drawer.Screen name="Importar contactos" component={ImportarContactos} />
+        <Drawer.Screen name="Papelera de reciclaje" component={PapeleraDeReciclaje} />
+        <Drawer.Screen name="Acerca de" component={AcercaDe} />
       </Drawer.Navigator>
       </NavigationContainer>
     )}}

@@ -21,7 +21,7 @@ import {saveLocal} from '../api/saveLocal';
 import {getLocal} from '../api/getLocal';
 
 
-export class Screen_Inicio extends Component {
+export class ImportarContactos extends Component {
     constructor(){
         super();
         this.state = {
@@ -58,42 +58,45 @@ export class Screen_Inicio extends Component {
         console.log(this.state.users);
         return(
         <View>
+
+            {/* Header de la screen */}
+
+            {/* Header de la screen */}
             <View style= {styles.header}>
-                <TouchableOpacity>
-                             <Text>           </Text> 
-                            <Image source={require('../src/Icons/BurgerIcon.png')}  style={styles.burgerIcon}/>
-                            {/* No se ve sin el Text */}
-                </TouchableOpacity>
-                <Text style= {styles.h1header}> Agenda de contactos</Text>
+                <View style={styles.burgerButton}>
+                    <TouchableOpacity onPress={ () => this.props.navigation.openDrawer()}>
+                                <Image style={styles.IconBurger} source={require('../src/Icons/BurgerIcon.png')}/>
+                    </TouchableOpacity>
+                </View>
+                <Text style= {styles.h1header}> Importar contactos</Text>
             </View>
 
-            <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
             
+
+            {/* En este input ingresamos cuantos contactos queremos traer de la API */}
+            <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
+            {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
             <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
                 <View style={styles.boton}>
                     <Text style={styles.botonText} onPress= { () => this.addContacts(this.state.cantHandler)} >Agregar</Text>
                 </View>
             </TouchableOpacity>
 
+
+
+            {/* Esta lista debe mostrar los contactos que traemos de la API */}
             <ListadeContactos usuarios={this.state.users} />
             {console.log(this.state.users)}
 
 
+            {/* Esta boton debe guardar los contactos que traemos de la API */}
             <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
                 <View style={styles.boton}>
                     <Text style={styles.botonText}>Guardar contactos</Text>
                 </View>
             </TouchableOpacity>
-            {/* <Modal
-            visible= {this.state.showModal}
-            >
-                <View>
-                    <Text> MODAL </Text>
 
-                </View>
-            </Modal>
 
-            <Button title="Show Modal" onPress={ () => this.setState({showModal: True})}> </Button> */}
         </View>
     )}
 }
