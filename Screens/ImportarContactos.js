@@ -5,9 +5,6 @@ import {styles} from '../src/Styles';
 import {
     View,
     Text,
-    FlatList,
-    Modal,
-    Button,
     TextInput,
     TouchableOpacity,
     Image,
@@ -44,18 +41,11 @@ export class ImportarContactos extends Component {
             this.setState({users: usuarios});
         })
     }
-    
-    renderItem =({item}) => {
-        return(
-        <View>
-            <Text> {item.name.last}, {item.name.first} </Text>
-        </View>
-        )};
+
 
     keyExtractor= (item,idx) => idx.toString();
 
     render() {
-        console.log(this.state.users);
         return(
         <View>
 
@@ -82,11 +72,11 @@ export class ImportarContactos extends Component {
                 </View>
             </TouchableOpacity>
 
+            {console.log(this.state.users)}
 
 
             {/* Esta lista debe mostrar los contactos que traemos de la API */}
             <ListadeContactos usuarios={this.state.users} />
-            {console.log(this.state.users)}
 
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}

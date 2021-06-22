@@ -17,7 +17,6 @@ export class ListadeContactos extends Component {
     constructor(props){
         super(props);
         this.state = {
-            users: props.usuarios,
         };
     }
 
@@ -27,17 +26,13 @@ export class ListadeContactos extends Component {
 
     renderItem =({item}) => {
         return(
-        <TouchableOpacity>
             <View>
-                {/* <Text> {item.name.last}, {item.name.first} </Text> */}
+                <Text> {item.name.last}, {item.name.first} </Text>
             </View>
-        </TouchableOpacity>
 
         )};
 
-    keyExtractor= (item,idx) => idx.toString();
-
-
+    keyExtractor= (item,idx) => (idx.toString());
 
     render() {
         console.log(this.state.users);
@@ -50,7 +45,7 @@ export class ListadeContactos extends Component {
                     <Text style={styles.h1header}> Mis contactos </Text>
                 </View>
                 <FlatList
-                data = { this.state.users }
+                data = { this.props.usuarios }
                 keyExtractor= { this.keyExtractor }
                 renderItem= { this.renderItem }
                 />

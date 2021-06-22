@@ -47,8 +47,7 @@ export class MisContactos extends Component {
 
 
             {/* Esta lista debe mostrar los contactos guardados en local storage */}
-            <ListadeContactos usuarios={this.state.users} />
-            {console.log(this.state.users)}
+            <ListadeContactos usuarios = {this.state.users} />
 
         </View>
     )}
