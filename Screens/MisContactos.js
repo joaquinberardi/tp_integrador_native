@@ -38,6 +38,16 @@ export class MisContactos extends Component {
         //getLocal('localUsers').then((users) => {this.setState({users: users})})
     }
 
+    deleteContact = (key) => {
+        let user = this.state.users.filter((user) => {return user.login.uuid === key})
+        getLocal('recycleBin').then((bin) => {
+            let deletedUsers = bin.concat(user)
+            storeLocal('recycleBin', deletedUsers)
+            let users = this.state.users.filter((user) => {return user.login.uuid !== key})
+            this.setState({users: users})
+        })
+    }
+
     showModal = (key) => {
         let user = this.state.users.filter((user) => { return user.login.uuid === key})
         this.setState({selectItem: user[0]});
@@ -58,8 +68,7 @@ export class MisContactos extends Component {
             <Header titulo={"Mis contactos"} navigation={this.props.navigation}/>
 
             {/* Esta lista debe mostrar los contactos guardados en local storage */}
-            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users} showModal={this.showModal}/>
-            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
+            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users} />
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('localUsers').then((users)=>{this.setState({users: users})})}}>

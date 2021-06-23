@@ -80,11 +80,7 @@ export class ImportarContactos extends Component {
 
             {/* Header de la screen */}
             <Header titulo={"Importar Contactos"} navigation={this.props.navigation}/>
-            { this.state.activity &&
-            <ActivityIndicator
-                    size="large"
-                    colo="red"/>
-            }
+            
 
             {/* En este input ingresamos cuantos contactos queremos traer de la API */}
             {/* El cant handler se ocupa de pedirle cierta cantidad de usuarios a la api? */}
@@ -98,8 +94,12 @@ export class ImportarContactos extends Component {
             </TouchableOpacity>
             
             {/* Esta lista debe mostrar los contactos que traemos de la API */}
-            <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} showModal={this.showModal} deleteContact={this.deleteContact}/>
-
+            <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} showModal = {this.showModal}/>
+            { this.state.activity &&
+            <ActivityIndicator
+                    size="large"
+                    colo="red"/>
+            }
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => storeLocal('localUsers', this.state.users)}>
                 <View >
