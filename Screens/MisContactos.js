@@ -17,7 +17,7 @@ import {ListadeContactos} from '../Components/ListadeContactos';
 import {Header} from '../Components/Header';
 
 import {getAPI} from '../api/RandomUser';
-import {saveLocal} from '../api/saveLocal';
+import {saveLocal} from '../api/storeLocal';
 import {getLocal} from '../api/getLocal';
 
 
@@ -32,7 +32,7 @@ export class MisContactos extends Component {
 
     async getData(){
         try{
-            const resultado =- await AsyncStorage.getItem('localUsers');
+            const resultado = await AsyncStorage.getItem('localUsers');
             this.setState({importedUsers: JSON.parse(resultado)})
             console.log(importedUsers);
         }catch(e){

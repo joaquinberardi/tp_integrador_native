@@ -1,8 +1,8 @@
-export async function getLocal() {
+export async function getLocal(key) {
     try {
-        const jsonValue = await AsyncStorage.getItem('@storage_Key')
+        const jsonValue = await AsyncStorage.getItem(key)
         return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
-        //error reading value
+        console.log(e);
     }
 }

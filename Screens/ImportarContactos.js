@@ -14,7 +14,7 @@ import {ListadeContactos} from '../Components/ListadeContactos';
 import {Header} from '../Components/Header';
 
 import {getAPI} from '../api/RandomUser';
-import {saveLocal} from '../api/saveLocal';
+import {saveLocal} from '../api/storeLocal';
 import {getLocal} from '../api/getLocal';
 
 
@@ -40,6 +40,11 @@ export class ImportarContactos extends Component {
             usuarios = this.state.users.concat(usuarios)
             this.setState({users: usuarios});
         })
+    }
+
+    deleteContact = (key) => {
+        users = this.state.users.filter((user) => {return user.key != key})
+        this.setState({users: users})
     }
 
     async storeData(){
