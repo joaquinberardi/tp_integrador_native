@@ -49,7 +49,7 @@ export class PapeleraDeReciclaje extends Component {
             
             <Header titulo={"Papelera de reciclaje"} navigation={this.props.navigation}/>
 
-            <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users} />
+            <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users}  showModal = {this.showModal}/>
             <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
 
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('recycleBin').then((users)=>{this.setState({users: users})})}}>
@@ -57,8 +57,6 @@ export class PapeleraDeReciclaje extends Component {
                     <Text style={styles.botonText}>Cargar datos</Text>
                 </View>
             </TouchableOpacity>
-
-            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
 
 
         </View>
