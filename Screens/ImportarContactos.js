@@ -65,11 +65,8 @@ export class ImportarContactos extends Component {
     
     showModal = (key) => {
         let user = this.state.users.filter((user) => { return user.login.uuid === key})
-        console.log(user[0]);
         this.setState({selectItem: user[0]});
         this.setState({showModal: true});
-        console.log("MODAL");
-        console.log(this.state.showModal);
     }
 
     render() {
@@ -86,12 +83,12 @@ export class ImportarContactos extends Component {
 
             {/* En este input ingresamos cuantos contactos queremos traer de la API */}
             {/* El cant handler se ocupa de pedirle cierta cantidad de usuarios a la api? */}
-            <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
+            <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}/>
             {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
             {/* Que seria el cant:?*/}
-            <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
+            <TouchableOpacity  onPress= { () => this.addContacts(this.state.cantHandler)}>
                 <View style={styles.boton}>
-                    <Text style={styles.botonText} onPress= {() => this.addContacts(this.state.cantHandler)}>Agregar</Text>
+                    <Text style={styles.botonText}  >Agregar</Text>
                 </View>
             </TouchableOpacity>
             
@@ -111,7 +108,34 @@ export class ImportarContactos extends Component {
                             {this.state.selectItem && 
                             
                             <>
-                            <Text> {this.state.selectItem.name.last} </Text>
+
+                            <View>
+                                <TouchableOpacity onPress={ () => this.setState({showModal:false})}>
+                                    <View>
+                                        <Text style={styles.h1}> X </Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={styles.modalHeader}>
+                                <Image style= {styles.modalImage} source={{uri: this.state.selectItem.picture.thumbnail}}/>
+                                <View>
+                                    <Text style={styles.h1}> {this.state.selectItem.name.last}, {this.state.selectItem.name.first} </Text>
+                                    <Text style={styles.h1}> {this.state.selectItem.dob.age} Años </Text>
+
+                                </View>
+                            </View>
+
+                            <View style={styles.modalContent}>
+                                <Text style={styles.p}>Email: {this.state.selectItem.email}</Text>
+                                <Text style={styles.p}>País: {this.state.selectItem.location.country}</Text>
+                                <Text style={styles.p}>Ciudad: {this.state.selectItem.location.city}</Text>
+                                <Text style={styles.p}>Direccion: {this.state.selectItem.location.street.name}{this.state.selectItem.location.street.number}</Text>
+                                <Text style={styles.p}>Codigo postal: {this.state.selectItem.location.postcode}</Text>
+                                <Text style={styles.p}>Telefono: {this.state.selectItem.phone}</Text>
+                                <Text style={styles.p}>Celular: {this.state.selectItem.cell}</Text>
+                            </View>
+
                             </>
                             }
                         </View>

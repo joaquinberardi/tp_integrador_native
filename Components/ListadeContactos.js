@@ -51,12 +51,7 @@ export class ListadeContactos extends Component {
                 numColumns= {2}
                 />
             </View>
-
-            {/* <Modal visible= {this.state.showModal}>
-                    <Text> pepe </Text>
-            </Modal>
-            <TouchableOpacity title="Show Modal" onPress={ () => this.setState({showModal: !this.state.showModal})}> Show Modal </TouchableOpacity>  */}
-
+            
         </View>
     )}
 }
