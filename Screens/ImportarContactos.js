@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
     Image,
     Modal,
+    ActivityIndicator,
 } from 'react-native';
 
 import {ListadeContactos} from '../Components/ListadeContactos';
@@ -34,7 +35,7 @@ export class ImportarContactos extends Component {
     componentDidMount(){
         getAPI(10)
         .then( (usuarios) => {
-            this.setState({users: usuarios});
+            this.setState({users: usuarios, activity: false});
         })
     }
 
@@ -77,10 +78,17 @@ export class ImportarContactos extends Component {
 
             {/* Header de la screen */}
             <Header titulo={"Importar Contactos"} navigation={this.props.navigation}/>
+            { this.state.activity &&
+            <ActivityIndicator
+                    size="large"
+                    colo="red"/>
+            }
 
             {/* En este input ingresamos cuantos contactos queremos traer de la API */}
+            {/* El cant handler se ocupa de pedirle cierta cantidad de usuarios a la api? */}
             <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
             {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
+            {/* Que seria el cant:?*/}
             <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
                 <View style={styles.boton}>
                     <Text style={styles.botonText} onPress= {() => this.addContacts(this.state.cantHandler)}>Agregar</Text>
