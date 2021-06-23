@@ -30,6 +30,10 @@ export class MisContactos extends Component {
         }
     }
 
+    componentDidMount(){
+        //getLocal('localUsers').then((users) => {this.setState({users: users})})
+    }
+
     render() {
 
         return(
@@ -40,15 +44,14 @@ export class MisContactos extends Component {
             <Header titulo={"Mis contactos"} navigation={this.props.navigation}/>
 
             {/* Esta lista debe mostrar los contactos guardados en local storage */}
-            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.importedUsers} />
+            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users} />
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
-            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('localUsers').then((value)=>{this.setState({importedUsers: value})})}}>
+            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('localUsers').then((users)=>{this.setState({users: users})})}}>
                 <View >
                     <Text style={styles.botonText}>Cargar datos</Text>
                 </View>
             </TouchableOpacity>
-
 
         </View>
     )}
