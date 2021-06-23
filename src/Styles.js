@@ -203,6 +203,7 @@ const styles = StyleSheet.create({
     },
     modalContainer:{
       backgroundColor: "red",
+      height: 400,
     },
     modal:{
       backgroundColor: 'blue',

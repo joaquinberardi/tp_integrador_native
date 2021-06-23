@@ -22,8 +22,6 @@ export class Header extends Component {
     }
 
     render() {
-        console.log(this.state.users);
-
         return(
         <View style= {styles.header}>
                 <View style={styles.burgerButton}>

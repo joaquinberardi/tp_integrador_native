@@ -18,15 +18,9 @@ export class UserCard extends Component {
     constructor(){
         super();
         this.state = {
-            selectItem: null,
-            showModal: false,
         };
     }
 
-    showModal(item){
-        this.setState({selectItem: item, showModal: true});
-        console.log(this.state.selectItem);
-    }
 
     render() {
         return(
@@ -39,8 +33,8 @@ export class UserCard extends Component {
                     <Text style={styles.p}> {this.props.contacto.dob.age} Años </Text>
                 </View>
 
-                <View style={styles.contenedorBotonesUserCard}>
-                    <TouchableOpacity  style={styles.botonVerMas} onPress= { () => this.showModal(this.props.contacto)}> 
+                <View style={styles.contenedorBotonesUserCard} >
+                    <TouchableOpacity  style={styles.botonVerMas} onPress= { () => this.props.showModal(this.props.contacto.login.uuid)}> 
                         <View >
                             <Text style={styles.textoVerMas} > Ver mas </Text>
                         </View>
@@ -51,19 +45,6 @@ export class UserCard extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
-                
-                <Modal visible= {this.state.showModal} >
-                    <View style={styles.modalContainer}>
-                        <View style={styles.modal}>
-                            {this.state.selectItem && 
-                            
-                            <>
-                            <Text> {this.state.selectItem.name.last} </Text>
-                            </>
-                            }
-                        </View>
-                    </View>
-                </Modal>
         </View>
     )}
 }
