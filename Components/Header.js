@@ -32,9 +32,8 @@ export class Header extends Component {
                                 <Image style={styles.IconBurger} source={require('../src/Icons/BurgerIcon.png')}/>
                     </TouchableOpacity>
                 </View>
-                <Text style= {styles.h1header}> Agenda de contactos</Text>
+                <Text style= {styles.h1header}> {this.props.titulo}</Text>
             </View>
-
 
         </View>
     )}

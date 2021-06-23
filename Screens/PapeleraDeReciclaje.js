@@ -12,6 +12,10 @@ import {
     Image,
 } from 'react-native';
 
+import {ListadeContactos} from '../Components/ListadeContactos';
+import {Header} from '../Components/Header';
+
+
 export class PapeleraDeReciclaje extends Component {
     constructor(){
         super();
@@ -23,14 +27,10 @@ export class PapeleraDeReciclaje extends Component {
         return(
         <View>
             
-            <View style= {styles.header}>
-                <View style={styles.burgerButton}>
-                    <TouchableOpacity onPress={ () => this.props.navigation.openDrawer()}>
-                                <Image style={styles.IconBurger} source={require('../src/Icons/BurgerIcon.png')}/>
-                    </TouchableOpacity>
-                </View>
-                <Text style= {styles.h1header}> Papelera de reciclaje </Text>
-            </View>
+            <Header titulo={"Papelera de reciclaje"} navigation={this.props.navigation}/>
+
+            <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users} />
+
 
         </View>
     )}

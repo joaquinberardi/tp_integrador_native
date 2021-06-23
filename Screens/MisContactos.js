@@ -35,19 +35,10 @@ export class MisContactos extends Component {
 
             {/* <Header titulo = {"Mis Contactos"} /> */}
             
-            <View style= {styles.header}>
-                <View style={styles.burgerButton}>
-                    <TouchableOpacity onPress={ () => this.props.navigation.openDrawer()}>
-                                <Image style={styles.IconBurger} source={require('../src/Icons/BurgerIcon.png')}/>
-                    </TouchableOpacity>
-                </View>
-                <Text style= {styles.h1header}> Agenda de contactos</Text>
-            </View>
-
-
+            <Header titulo={"Mis contactos"} navigation={this.props.navigation}/>
 
             {/* Esta lista debe mostrar los contactos guardados en local storage */}
-            <ListadeContactos usuarios = {this.state.users} />
+            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users} />
 
         </View>
     )}

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import {ListadeContactos} from '../Components/ListadeContactos';
-
+import {Header} from '../Components/Header';
 
 import {getAPI} from '../api/RandomUser';
 import {saveLocal} from '../api/saveLocal';
@@ -52,16 +52,7 @@ export class ImportarContactos extends Component {
             {/* Header de la screen */}
 
             {/* Header de la screen */}
-            <View style= {styles.header}>
-                <View style={styles.burgerButton}>
-                    <TouchableOpacity onPress={ () => this.props.navigation.openDrawer()}>
-                                <Image style={styles.IconBurger} source={require('../src/Icons/BurgerIcon.png')}/>
-                    </TouchableOpacity>
-                </View>
-                <Text style= {styles.h1header}> Importar contactos</Text>
-            </View>
-
-            
+            <Header titulo={"Importar Contactos"} navigation={this.props.navigation}/>
 
             {/* En este input ingresamos cuantos contactos queremos traer de la API */}
             <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
@@ -76,7 +67,7 @@ export class ImportarContactos extends Component {
 
 
             {/* Esta lista debe mostrar los contactos que traemos de la API */}
-            <ListadeContactos usuarios={this.state.users} />
+            <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} />
 
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}

@@ -11,6 +11,7 @@ import {
     Button,
 } from 'react-native';
 
+import{UserCard} from './UserCard'
 import {styles} from '../src/Styles';
 
 export class ListadeContactos extends Component {
@@ -26,12 +27,7 @@ export class ListadeContactos extends Component {
 
     renderItem =({item}) => {
         return(
-            <View style={styles.listCard}>
-                <Image style= {styles.listImage} source={{uri: item.picture.thumbnail}}/>
-                <Text> {item.name.last}, {item.name.first} </Text>
-                <Text> {item.dob.age}</Text>
-            </View>
-
+            <UserCard contacto={item}/>
         )};
 
     keyExtractor= (item,idx) => (idx.toString());
@@ -44,7 +40,7 @@ export class ListadeContactos extends Component {
             <View >
 
                 <View style={styles.listViewHeader}>
-                    <Text style={styles.h1header}> Mis contactos </Text>
+                    <Text style={styles.h1header}> {this.props.titulo} </Text>
                 </View>
                 <FlatList
                 data = { this.props.usuarios }
