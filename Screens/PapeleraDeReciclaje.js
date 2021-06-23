@@ -14,13 +14,19 @@ import {
 
 import {ListadeContactos} from '../Components/ListadeContactos';
 import {Header} from '../Components/Header';
+import {getLocal} from '../api/getLocal';
 
 
 export class PapeleraDeReciclaje extends Component {
     constructor(){
         super();
         this.state = {
+            users: []
         }
+    }
+
+    componentDidMount(){
+        //getLocal('recycleBin').then((users) => {this.setState({users: users})})
     }
 
     render() {
@@ -30,6 +36,12 @@ export class PapeleraDeReciclaje extends Component {
             <Header titulo={"Papelera de reciclaje"} navigation={this.props.navigation}/>
 
             <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users} />
+
+            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('recycleBin').then((users)=>{this.setState({users: users})})}}>
+                <View >
+                    <Text style={styles.botonText}>Cargar datos</Text>
+                </View>
+            </TouchableOpacity>
 
 
         </View>

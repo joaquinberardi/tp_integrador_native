@@ -46,12 +46,15 @@ export class ImportarContactos extends Component {
     }
 
     deleteContact = (key) => {
-        users = this.state.users.filter((user) => {return user.key != key})
+        user = this.state.users.filter((user) => {return user.login.uuid === key})
+        deletedUsers = getLocal('recycleBin')
+        deletedUsers = deletedUsers.concat(user)
+        storeLocal('recycleBin', deletedUsers)
+        users = this.state.users.filter((user) => {return user.login.uuid !== key})
         this.setState({users: users})
     }
 
     keyExtractor= (item,idx) => idx.toString();
-
     
     showModal = (key) => {
         let user = this.state.users.filter((user) => { return user.login.uuid === key})
