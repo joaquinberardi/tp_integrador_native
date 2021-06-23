@@ -14,6 +14,7 @@ import {
 
 import {ListadeContactos} from '../Components/ListadeContactos';
 import {Header} from '../Components/Header';
+import {ModalContacto} from '../Components/ModalContacto';
 
 import {getAPI} from '../api/RandomUser';
 import {storeLocal} from '../api/storeLocal';
@@ -27,7 +28,7 @@ export class ImportarContactos extends Component {
             cantHandler: "",
             users: [],
             selectItem: null,
-            showModal: false,
+            Modal: false,
             selectedItems: [],
         }
     }
@@ -66,7 +67,11 @@ export class ImportarContactos extends Component {
     showModal = (key) => {
         let user = this.state.users.filter((user) => { return user.login.uuid === key})
         this.setState({selectItem: user[0]});
-        this.setState({showModal: true});
+        this.setState({Modal: true});
+    }
+
+    closeModal = () => {
+        this.setState({Modal: false})
     }
 
     render() {
@@ -102,45 +107,9 @@ export class ImportarContactos extends Component {
                 </View>
             </TouchableOpacity>
 
-            <Modal visible= {this.state.showModal} >
-                    <View style={styles.modalContainer}>
-                        <View style={styles.modal}>
-                            {this.state.selectItem && 
-                            
-                            <>
+            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
 
-                            <View>
-                                <TouchableOpacity onPress={ () => this.setState({showModal:false})}>
-                                    <View>
-                                        <Text style={styles.h1}> X </Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
 
-                            <View style={styles.modalHeader}>
-                                <Image style= {styles.modalImage} source={{uri: this.state.selectItem.picture.thumbnail}}/>
-                                <View>
-                                    <Text style={styles.h1}> {this.state.selectItem.name.last}, {this.state.selectItem.name.first} </Text>
-                                    <Text style={styles.h1}> {this.state.selectItem.dob.age} Años </Text>
-
-                                </View>
-                            </View>
-
-                            <View style={styles.modalContent}>
-                                <Text style={styles.p}>Email: {this.state.selectItem.email}</Text>
-                                <Text style={styles.p}>País: {this.state.selectItem.location.country}</Text>
-                                <Text style={styles.p}>Ciudad: {this.state.selectItem.location.city}</Text>
-                                <Text style={styles.p}>Direccion: {this.state.selectItem.location.street.name}{this.state.selectItem.location.street.number}</Text>
-                                <Text style={styles.p}>Codigo postal: {this.state.selectItem.location.postcode}</Text>
-                                <Text style={styles.p}>Telefono: {this.state.selectItem.phone}</Text>
-                                <Text style={styles.p}>Celular: {this.state.selectItem.cell}</Text>
-                            </View>
-
-                            </>
-                            }
-                        </View>
-                    </View>
-            </Modal>
 
         </View>
     )}

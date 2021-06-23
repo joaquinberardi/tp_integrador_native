@@ -35,7 +35,7 @@ export class UserCard extends Component {
 
     render() {
         return(
-        <TouchableOpacity onPress={()=>{this.setState({selected: !this.state.selected})}}>
+        // <TouchableOpacity onPress={()=>{this.setState({selected: !this.state.selected})}}>
             <View style={styles.listCard} key={this.props.contacto.login.uuid}>
 
                 <Image style= {styles.listImage} source={{uri: this.props.contacto.picture.thumbnail}}/>
@@ -59,6 +59,6 @@ export class UserCard extends Component {
                 </View>
 
             </View>
-        </TouchableOpacity>
+        // </TouchableOpacity>
     )}
 }

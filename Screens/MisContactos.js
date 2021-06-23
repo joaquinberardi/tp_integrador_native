@@ -15,6 +15,8 @@ import {
 
 import {ListadeContactos} from '../Components/ListadeContactos';
 import {Header} from '../Components/Header';
+import {ModalContacto} from '../Components/ModalContacto';
+
 
 import {getAPI} from '../api/RandomUser';
 import {storeLocal} from '../api/storeLocal';
@@ -27,11 +29,23 @@ export class MisContactos extends Component {
         this.state = {
             cantHandler: "",
             users: [],
+            selectItem: null,
+            Modal: false,
         }
     }
 
     componentDidMount(){
         //getLocal('localUsers').then((users) => {this.setState({users: users})})
+    }
+
+    showModal = (key) => {
+        let user = this.state.users.filter((user) => { return user.login.uuid === key})
+        this.setState({selectItem: user[0]});
+        this.setState({Modal: true});
+    }
+
+    closeModal = () => {
+        this.setState({Modal: false})
     }
 
     render() {
@@ -44,7 +58,8 @@ export class MisContactos extends Component {
             <Header titulo={"Mis contactos"} navigation={this.props.navigation}/>
 
             {/* Esta lista debe mostrar los contactos guardados en local storage */}
-            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users} />
+            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users} showModal={this.showModal}/>
+            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('localUsers').then((users)=>{this.setState({users: users})})}}>
@@ -52,6 +67,7 @@ export class MisContactos extends Component {
                     <Text style={styles.botonText}>Cargar datos</Text>
                 </View>
             </TouchableOpacity>
+
 
         </View>
     )}

@@ -15,19 +15,33 @@ import {
 import {ListadeContactos} from '../Components/ListadeContactos';
 import {Header} from '../Components/Header';
 import {getLocal} from '../api/getLocal';
+import {ModalContacto} from '../Components/ModalContacto';
 
 
 export class PapeleraDeReciclaje extends Component {
     constructor(){
         super();
         this.state = {
-            users: []
+            users: [],
+            selectItem: null,
+            Modal: false,
         }
     }
 
     componentDidMount(){
         //getLocal('recycleBin').then((users) => {this.setState({users: users})})
     }
+
+    showModal = (key) => {
+        let user = this.state.users.filter((user) => { return user.login.uuid === key})
+        this.setState({selectItem: user[0]});
+        this.setState({Modal: true});
+    }
+
+    closeModal = () => {
+        this.setState({Modal: false})
+    }
+
 
     render() {
         return(
@@ -36,12 +50,16 @@ export class PapeleraDeReciclaje extends Component {
             <Header titulo={"Papelera de reciclaje"} navigation={this.props.navigation}/>
 
             <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users} />
+            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
 
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('recycleBin').then((users)=>{this.setState({users: users})})}}>
                 <View>
                     <Text style={styles.botonText}>Cargar datos</Text>
                 </View>
             </TouchableOpacity>
+
+            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
+
 
         </View>
     )}
