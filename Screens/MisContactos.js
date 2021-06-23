@@ -17,7 +17,7 @@ import {ListadeContactos} from '../Components/ListadeContactos';
 import {Header} from '../Components/Header';
 
 import {getAPI} from '../api/RandomUser';
-import {saveLocal} from '../api/storeLocal';
+import {storeLocal} from '../api/storeLocal';
 import {getLocal} from '../api/getLocal';
 
 
@@ -29,16 +29,6 @@ export class MisContactos extends Component {
             users: [],
         }
     }
-
-    async getData(){
-        try{
-            const resultado = await AsyncStorage.getItem('localUsers');
-            this.setState({importedUsers: JSON.parse(resultado)})
-            console.log(importedUsers);
-        }catch(e){
-            console.log(e);
-        }
-    };
 
     render() {
 
@@ -53,7 +43,7 @@ export class MisContactos extends Component {
             <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.importedUsers} />
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
-            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={ this.getData.bind(this)}>
+            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('localUsers').then((value)=>{this.setState({importedUsers: value})})}}>
                 <View >
                     <Text style={styles.botonText}>Cargar datos</Text>
                 </View>
