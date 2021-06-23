@@ -8,6 +8,7 @@ import {
     TextInput,
     TouchableOpacity,
     Image,
+    Modal,
 } from 'react-native';
 
 import {ListadeContactos} from '../Components/ListadeContactos';
@@ -24,6 +25,8 @@ export class ImportarContactos extends Component {
         this.state = {
             cantHandler: "",
             users: [],
+            selectItem: null,
+            showModal: false,
         }
     }
 
@@ -49,11 +52,19 @@ export class ImportarContactos extends Component {
 
     keyExtractor= (item,idx) => idx.toString();
 
+    
+    showModal = (key) => {
+        let user = this.state.users.filter((user) => { return user.login.uuid === key})
+        console.log(user[0]);
+        this.setState({selectItem: user[0]});
+        this.setState({showModal: true});
+        console.log("MODAL");
+        console.log(this.state.showModal);
+    }
+
     render() {
         return(
             <View style={{flex:1}}>
-
-
 
             {/* Header de la screen */}
             <Header titulo={"Importar Contactos"} navigation={this.props.navigation}/>
@@ -69,7 +80,7 @@ export class ImportarContactos extends Component {
             
 
             {/* Esta lista debe mostrar los contactos que traemos de la API */}
-            <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} />
+            <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} showModal = {this.showModal}/>
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={ () => storeLocal('localUsers', this.state.users)}>
@@ -78,6 +89,18 @@ export class ImportarContactos extends Component {
                 </View>
             </TouchableOpacity>
 
+            <Modal visible= {this.state.showModal} >
+                    <View style={styles.modalContainer}>
+                        <View style={styles.modal}>
+                            {this.state.selectItem && 
+                            
+                            <>
+                            <Text> {this.state.selectItem.name.last} </Text>
+                            </>
+                            }
+                        </View>
+                    </View>
+            </Modal>
 
 
 

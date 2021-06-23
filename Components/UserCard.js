@@ -8,6 +8,7 @@ import {
     Text,
     Image,
     TouchableOpacity,
+    Modal,
 
 } from 'react-native';
 
@@ -20,6 +21,7 @@ export class UserCard extends Component {
         };
     }
 
+
     render() {
         return(
         <View style={styles.listCard} key={this.props.contacto.login.uuid}>
@@ -31,10 +33,10 @@ export class UserCard extends Component {
                     <Text style={styles.p}> {this.props.contacto.dob.age} Años </Text>
                 </View>
 
-                <View style={styles.contenedorBotonesUserCard}>
-                    <TouchableOpacity  style={styles.botonVerMas}> 
+                <View style={styles.contenedorBotonesUserCard} >
+                    <TouchableOpacity  style={styles.botonVerMas} onPress= { () => this.props.showModal(this.props.contacto.login.uuid)}> 
                         <View >
-                            <Text style={styles.textoVerMas}> Ver mas </Text>
+                            <Text style={styles.textoVerMas} > Ver mas </Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity  style={styles.botonImportar}> 
@@ -43,7 +45,6 @@ export class UserCard extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
-                
         </View>
     )}
 }

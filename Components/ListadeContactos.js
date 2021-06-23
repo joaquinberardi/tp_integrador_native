@@ -27,13 +27,12 @@ export class ListadeContactos extends Component {
 
     renderItem =({item}) => {
         return(
-            <UserCard contacto={item}/>
+            <UserCard contacto={item} showModal= {this.props.showModal}/>
         )};
 
     keyExtractor= (item,idx) => (idx.toString());
 
     render() {
-        console.log(this.state.users);
 
         return(
         <View style={styles.listViewContainer}>
