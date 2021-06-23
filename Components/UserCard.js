@@ -8,6 +8,7 @@ import {
     Text,
     Image,
     TouchableOpacity,
+    Modal,
 
 } from 'react-native';
 
@@ -17,7 +18,14 @@ export class UserCard extends Component {
     constructor(){
         super();
         this.state = {
+            selectItem: null,
+            showModal: false,
         };
+    }
+
+    showModal(item){
+        this.setState({selectItem: item, showModal: true});
+        console.log(this.state.selectItem);
     }
 
     render() {
@@ -32,9 +40,9 @@ export class UserCard extends Component {
                 </View>
 
                 <View style={styles.contenedorBotonesUserCard}>
-                    <TouchableOpacity  style={styles.botonVerMas}> 
+                    <TouchableOpacity  style={styles.botonVerMas} onPress= { () => this.showModal(this.props.contacto)}> 
                         <View >
-                            <Text style={styles.textoVerMas}> Ver mas </Text>
+                            <Text style={styles.textoVerMas} > Ver mas </Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity  style={styles.botonImportar}> 
@@ -44,6 +52,18 @@ export class UserCard extends Component {
                     </TouchableOpacity>
                 </View>
                 
+                <Modal visible= {this.state.showModal} >
+                    <View style={styles.modalContainer}>
+                        <View style={styles.modal}>
+                            {this.state.selectItem && 
+                            
+                            <>
+                            <Text> {this.state.selectItem.name.last} </Text>
+                            </>
+                            }
+                        </View>
+                    </View>
+                </Modal>
         </View>
     )}
 }

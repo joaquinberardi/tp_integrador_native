@@ -200,7 +200,13 @@ const styles = StyleSheet.create({
       resizeMode : 'cover',
       position: 'relative',
       alignSelf: 'center',
-    }
+    },
+    modalContainer:{
+      backgroundColor: "red",
+    },
+    modal:{
+      backgroundColor: 'blue',
+    },
   });
 
   export {styles};
