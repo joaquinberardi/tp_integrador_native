@@ -66,9 +66,6 @@ export class ImportarContactos extends Component {
                     <Text style={styles.botonText} onPress= { () => this.addContacts(this.state.cantHandler)} >Agregar</Text>
                 </View>
             </TouchableOpacity>
-
-            {console.log(this.state.users)}
-
             
 
             {/* Esta lista debe mostrar los contactos que traemos de la API */}
