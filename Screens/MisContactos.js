@@ -68,7 +68,7 @@ export class MisContactos extends Component {
             <Header titulo={"Mis contactos"} navigation={this.props.navigation}/>
 
             {/* Esta lista debe mostrar los contactos guardados en local storage */}
-            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users}   showModal = {this.showModal}/>
+            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users} deleteContact={this.deleteContact}  showModal = {this.showModal}/>
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('localUsers').then((users)=>{this.setState({users: users})})}}>
