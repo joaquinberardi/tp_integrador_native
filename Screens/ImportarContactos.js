@@ -70,8 +70,10 @@ export class ImportarContactos extends Component {
             <Header titulo={"Importar Contactos"} navigation={this.props.navigation}/>
 
             {/* En este input ingresamos cuantos contactos queremos traer de la API */}
+            {/* El cant handler se ocupa de pedirle cierta cantidad de usuarios a la api? */}
             <TextInput style={styles.input} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}></TextInput>
             {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
+            {/* Que seria el cant:?*/}
             <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
                 <View style={styles.boton}>
                     <Text style={styles.botonText} onPress= { () => this.addContacts(this.state.cantHandler)} >Agregar</Text>
