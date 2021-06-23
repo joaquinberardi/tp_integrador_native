@@ -71,8 +71,8 @@ export class ImportarContactos extends Component {
 
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
-            <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
-                <View style={styles.boton}>
+            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={ () => this.setState({cant: this.state.cantHandler})}>
+                <View >
                     <Text style={styles.botonText}>Guardar contactos</Text>
                 </View>
             </TouchableOpacity>

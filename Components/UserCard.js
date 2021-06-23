@@ -23,9 +23,27 @@ export class UserCard extends Component {
     render() {
         return(
         <View style={styles.listCard}>
+
                 <Image style= {styles.listImage} source={{uri: this.props.contacto.picture.thumbnail}}/>
-                <Text> {this.props.contacto.name.last}, {this.props.contacto.name.first} </Text>
-                <Text> {this.props.contacto.dob.age}</Text>
+               
+                <View style={styles.contenedorDetallesUserCard}>
+                    <Text style={[styles.p,{fontWeight: "bold"}]}> {this.props.contacto.name.last}, {this.props.contacto.name.first} </Text>
+                    <Text style={styles.p}> {this.props.contacto.dob.age} Años </Text>
+                </View>
+
+                <View style={styles.contenedorBotonesUserCard}>
+                    <TouchableOpacity  style={styles.botonVerMas}> 
+                        <View >
+                            <Text style={styles.textoVerMas}> Ver mas </Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity  style={styles.botonImportar}> 
+                        <View >
+                            <Text style={styles.textoImportar}> Importar </Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                
         </View>
     )}
 }
