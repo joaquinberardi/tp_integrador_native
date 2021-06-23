@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
     Image,
     Modal,
+    ActivityIndicator,
 } from 'react-native';
 
 import {ListadeContactos} from '../Components/ListadeContactos';
@@ -27,13 +28,14 @@ export class ImportarContactos extends Component {
             users: [],
             selectItem: null,
             showModal: false,
+            activity: true,
         }
     }
 
     componentDidMount(){
         getAPI(10)
         .then( (usuarios) => {
-            this.setState({users: usuarios});
+            this.setState({users: usuarios, activity: false});
         })
     }
 
@@ -68,6 +70,11 @@ export class ImportarContactos extends Component {
 
             {/* Header de la screen */}
             <Header titulo={"Importar Contactos"} navigation={this.props.navigation}/>
+            { this.state.activity &&
+            <ActivityIndicator
+                    size="large"
+                    colo="red"/>
+            }
 
             {/* En este input ingresamos cuantos contactos queremos traer de la API */}
             {/* El cant handler se ocupa de pedirle cierta cantidad de usuarios a la api? */}
