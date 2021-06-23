@@ -43,7 +43,6 @@ export class PapeleraDeReciclaje extends Component {
                 </View>
             </TouchableOpacity>
 
-
         </View>
     )}
 }

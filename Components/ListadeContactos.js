@@ -25,12 +25,14 @@ export class ListadeContactos extends Component {
     //     this.setState({selectedItem: item, showModal: true})
     // }
 
-    renderItem =({item}) => {
+    renderItem = ({item}) => {
         return(
-            <UserCard contacto={item} showModal= {this.props.showModal}/>
+            <UserCard contacto={item} showModal={this.props.showModal} deleteContact={this.props.deleteContact} />
         )};
 
-    keyExtractor= (item,idx) => (idx.toString());
+    keyExtractor = (item) => {
+        return item.login.uuid
+    };
 
     render() {
 

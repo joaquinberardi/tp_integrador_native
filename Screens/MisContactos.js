@@ -53,7 +53,6 @@ export class MisContactos extends Component {
                 </View>
             </TouchableOpacity>
 
-
         </View>
     )}
 }

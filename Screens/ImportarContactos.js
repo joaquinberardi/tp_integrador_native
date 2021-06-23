@@ -27,6 +27,7 @@ export class ImportarContactos extends Component {
             users: [],
             selectItem: null,
             showModal: false,
+            selectedItems: [],
         }
     }
 
@@ -45,13 +46,18 @@ export class ImportarContactos extends Component {
         })
     }
 
+    // selectContact = (key) => {
+    //     this.setState({selectedItems: this.selectedItems.push()})
+    // }
+
     deleteContact = (key) => {
-        user = this.state.users.filter((user) => {return user.login.uuid === key})
-        deletedUsers = getLocal('recycleBin')
-        deletedUsers = deletedUsers.concat(user)
-        storeLocal('recycleBin', deletedUsers)
-        users = this.state.users.filter((user) => {return user.login.uuid !== key})
-        this.setState({users: users})
+        let user = this.state.users.filter((user) => {return user.login.uuid === key})
+        getLocal('recycleBin').then((bin) => {
+            let deletedUsers = bin.concat(user)
+            storeLocal('recycleBin', deletedUsers)
+            let users = this.state.users.filter((user) => {return user.login.uuid !== key})
+            this.setState({users: users})
+        })
     }
 
     keyExtractor= (item,idx) => idx.toString();
@@ -77,16 +83,15 @@ export class ImportarContactos extends Component {
             {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
             <TouchableOpacity  onPress={ () => this.setState({cant: this.state.cantHandler})}>
                 <View style={styles.boton}>
-                    <Text style={styles.botonText} onPress= { () => this.addContacts(this.state.cantHandler)} >Agregar</Text>
+                    <Text style={styles.botonText} onPress= {() => this.addContacts(this.state.cantHandler)}>Agregar</Text>
                 </View>
             </TouchableOpacity>
             
-
             {/* Esta lista debe mostrar los contactos que traemos de la API */}
-            <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} showModal = {this.showModal}/>
+            <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} showModal={this.showModal} deleteContact={this.deleteContact}/>
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
-            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={ () => storeLocal('localUsers', this.state.users)}>
+            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => storeLocal('localUsers', this.state.users)}>
                 <View >
                     <Text style={styles.botonText}>Guardar contactos</Text>
                 </View>
@@ -104,8 +109,6 @@ export class ImportarContactos extends Component {
                         </View>
                     </View>
             </Modal>
-
-
 
         </View>
     )}
