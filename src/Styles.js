@@ -59,9 +59,9 @@ const styles = StyleSheet.create({
       marginHorizontal: 14,
       paddingVertical: 16,
       shadowColor: "#000",
-      shadowOpacity: 0.3,
-      shadowRadius: 2.22,
-      elevation: 3,
+      shadowOpacity: 0.5,
+      shadowRadius: 5,
+      elevation: 5,
     },
     contenedorDetallesUserCard:{
       display: "flex",
