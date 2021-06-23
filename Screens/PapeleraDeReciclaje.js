@@ -31,14 +31,14 @@ export class PapeleraDeReciclaje extends Component {
 
     render() {
         return(
-        <View>
+        <View style={{flex:1}}>
             
             <Header titulo={"Papelera de reciclaje"} navigation={this.props.navigation}/>
 
             <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users} />
 
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('recycleBin').then((users)=>{this.setState({users: users})})}}>
-                <View >
+                <View>
                     <Text style={styles.botonText}>Cargar datos</Text>
                 </View>
             </TouchableOpacity>
