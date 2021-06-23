@@ -22,7 +22,7 @@ export class UserCard extends Component {
 
     render() {
         return(
-        <View style={styles.listCard}>
+        <View style={styles.listCard} key={this.props.contacto.login.uuid}>
 
                 <Image style= {styles.listImage} source={{uri: this.props.contacto.picture.thumbnail}}/>
                

@@ -50,13 +50,16 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
     },
     botonGuardarContactos: {
-      position: 'sticky',  
-      bottom:10,                                        
+      position: 'absolute',  
+      bottom: 0,
+      zIndex: 100,
       justifyContent: "center",
       alignItems: "center",
+      alignSelf: "center",
       backgroundColor: "#961515",
       borderRadius: 4,
-      marginHorizontal: 14,
+      width: "100%",
+      margin: 10,
       paddingVertical: 16,
       shadowColor: "#000",
       shadowOpacity: 0.5,
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.3,
       shadowRadius: 2.22,
       elevation: 3,
-      margingRight: 5,
+      marginRight: 5,
     },
     textoVerMas:{
       flex: 1,
@@ -131,7 +134,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
     header:{
-      flex: 1,
+      paddingTop:25,
       flexDirection: "row",
       alignItems: 'center',
       backgroundColor: "#B71C1C",
@@ -170,8 +173,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         flexDirection: "row",
         height: 56,
-        borderTopLeftRadius: 4,
-        borderTopRightRadius: 4,
         backgroundColor: "#B71C1C",
         shadowColor: "#000",
         shadowOpacity: 0.3,
@@ -179,9 +180,6 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     listContent:{
-      flex:1,
-      flexWrap: "wrap",
-      flexDirection: "row",
       justifyContent:'center',
       alignItems:'center',
     },
@@ -197,10 +195,11 @@ const styles = StyleSheet.create({
       elevation: 3,
     },
     listImage:{
-      borderTopEndRadius:4,
-      borderTopLeftRadius:4,
-      width: "100%",
+      width: 165,
       height: 80,
+      resizeMode : 'cover',
+      position: 'relative',
+      alignSelf: 'center',
     }
   });
 

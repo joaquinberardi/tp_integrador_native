@@ -29,16 +29,36 @@ export class MisContactos extends Component {
             users: [],
         }
     }
+
+    async getData(){
+        try{
+            const resultado =- await AsyncStorage.getItem('localUsers');
+            this.setState({importedUsers: JSON.parse(resultado)})
+            console.log(importedUsers);
+        }catch(e){
+            console.log(e);
+        }
+    };
+
     render() {
+
         return(
-        <View>
+            <View style={{flex:1}}>
 
             {/* <Header titulo = {"Mis Contactos"} /> */}
             
             <Header titulo={"Mis contactos"} navigation={this.props.navigation}/>
 
             {/* Esta lista debe mostrar los contactos guardados en local storage */}
-            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users} />
+            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.importedUsers} />
+
+            {/* Esta boton debe guardar los contactos que traemos de la API */}
+            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={ this.getData.bind(this)}>
+                <View >
+                    <Text style={styles.botonText}>Cargar datos</Text>
+                </View>
+            </TouchableOpacity>
+
 
         </View>
     )}

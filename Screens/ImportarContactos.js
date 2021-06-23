@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage, { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import {styles} from '../src/Styles';
 
 import {
@@ -42,14 +42,23 @@ export class ImportarContactos extends Component {
         })
     }
 
+    async storeData(){
+        try{
+            const jsonUsers = JSON.stringify(this.state.users)
+            await AsyncStorage.setItem("localUsers", jsonUsers);
+            {console.log(jsonUsers)}
+        }catch(e){
+            console.log(e);
+        }
+    }
 
     keyExtractor= (item,idx) => idx.toString();
 
     render() {
         return(
-        <View>
+            <View style={{flex:1}}>
 
-            {/* Header de la screen */}
+
 
             {/* Header de la screen */}
             <Header titulo={"Importar Contactos"} navigation={this.props.navigation}/>
@@ -65,17 +74,19 @@ export class ImportarContactos extends Component {
 
             {console.log(this.state.users)}
 
+            
 
             {/* Esta lista debe mostrar los contactos que traemos de la API */}
             <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} />
 
-
             {/* Esta boton debe guardar los contactos que traemos de la API */}
-            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={ () => this.setState({cant: this.state.cantHandler})}>
+            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={ () => this.storeData()}>
                 <View >
                     <Text style={styles.botonText}>Guardar contactos</Text>
                 </View>
             </TouchableOpacity>
+
+
 
 
         </View>
