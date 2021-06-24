@@ -20,8 +20,18 @@ export class ModalContacto extends Component {
     constructor(props){
         super(props);
         this.state = {
+            commentHandler: ""
+        }
     }
-    }
+
+    renderItem = ({comment}) => {
+        return(
+            <Comment comment={comment}/>
+        )};
+
+    keyExtractor = (item, idx) => {
+        return idx
+    };
 
     render() {
         return(
@@ -61,9 +71,9 @@ export class ModalContacto extends Component {
                                <Text style={styles.commentH1}>Comentarios</Text> 
 
                                <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
-                                    <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar comentario" />
+                                    <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar comentario" onChangeText={text => this.setState({commentHandler: text})} />
                                     {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
-                                    <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]}>
+                                    <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress={()=>{this.props.addComment(this.props.selectItem.login.uuid, this.state.commentHandler)}}>
                                         <View style={styles.boton}>
                                             <Text style={styles.botonText}>Comentar</Text>
                                         </View>
@@ -71,12 +81,13 @@ export class ModalContacto extends Component {
                             </View>
                                 
                             
-                            {/* <FlatList
+                            <FlatList
                                 data = { this.props.comentarios }
-                                keyExtractor= { this.keyExtractor }
-                                renderItem= { this.renderItem }
-                                contentContainerStyle= {styles.listComments}
-                            /> */}
+                                keyExtractor = { this.keyExtractor }
+                                renderItem = { this.renderItem }
+                                contentContainerStyle = {styles.listComments}
+                            />
+
                             </View>
 
 

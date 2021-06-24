@@ -62,10 +62,9 @@ export class MisContactos extends Component {
     }
 
     addComment = (key,comment) => {
-        let user = this.state.users.filter((user) => {return user.login.uuid === key})
-        getLocal('localUsers').then((users) => {
-            users = users.user.concat(comment)
-            storeLocal('localUsers', users)
+        getLocal(key).then((comments) => {
+            comments = comments + "/" + comment
+            storeLocal(key, comments)
         })
     }
 
@@ -104,7 +103,7 @@ export class MisContactos extends Component {
             </ScrollView>
 
             
-            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addContact={this.addComment} />
+            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addComment={this.addComment} />
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>
