@@ -212,6 +212,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
     },
     modalHeader:{
+      display: 'flex',
       flexDirection: 'row',
       justifyContent: "space-between" ,
       paddingVertical: 20,

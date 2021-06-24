@@ -41,12 +41,23 @@ export class ModalContacto extends Component {
                             {this.props.selectItem && 
                             
                             <>
-
-                            <TouchableOpacity style={[{alignSelf: 'flex-end'},{margin:15}]}onPress={ () => this.props.closeModal()}>
-                                    <View >
-                                        <Text style={styles.closeModal}>Volver</Text>
-                                    </View>
+                            <View style={[{justifyContent: "space-between"},{display: "flex"},{ flexDirection: "row"}]}>
+                            <TouchableOpacity style={[{alignSelf: 'flex-start'},{marginVertical:15}]}>
+                                <View style={styles.textIconContainer}>
+                                    <Image style={[styles.icono,{marginRight:10}]} source={require('../src/Icons/Edit.png')}/>
+                                    <Text style={styles.closeModal}>Editar</Text>
+                                </View>
                             </TouchableOpacity>
+                                <TouchableOpacity style={[{alignSelf: 'flex-end'},{marginVertical:15}]} onPress={ () => this.props.closeModal()}>
+                                <View style={styles.textIconContainer}>
+                                            <Text style={styles.closeModal}>Volver</Text>
+                                            <Image style={[styles.icono,{marginLeft:10}]} source={require('../src/Icons/Close.png')}/>
+
+                                        </View>
+                                </TouchableOpacity>
+
+                            </View>
+
 
                             <View style={styles.modalHeader}>
                                 <Image style= {styles.modalImage} source={{uri: this.props.selectItem.picture.thumbnail}}/>
