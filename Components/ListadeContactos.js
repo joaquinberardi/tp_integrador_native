@@ -38,8 +38,6 @@ export class ListadeContactos extends Component {
 
         return(
         <View style={styles.listViewContainer}>
-            <View >
-
                 <View style={styles.listViewHeader}>
                     <Text style={styles.h1header}> {this.props.titulo} </Text>
                 </View>
@@ -50,7 +48,6 @@ export class ListadeContactos extends Component {
                 contentContainerStyle= {styles.listContent}
                 numColumns= {2}
                 />
-            </View>
             
         </View>
     )}
