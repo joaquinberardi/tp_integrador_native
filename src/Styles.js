@@ -157,8 +157,8 @@ const styles = StyleSheet.create({
       margin: 14,
       backgroundColor: "#FAFAFA",
       elevation: 2,
-      borderTopEndRadius: 4,
-      borderTopLeftRadius: 4,
+      borderRadius:4,
+      marginBottom:120,
     },
     listViewHeader:{
         paddingHorizontal: 14,
@@ -189,6 +189,7 @@ const styles = StyleSheet.create({
     listImage:{
       width: 165,
       height: 80,
+      borderRadius:4,
       position: 'relative',
       alignSelf: 'center',
     },

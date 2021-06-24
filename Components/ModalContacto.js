@@ -10,6 +10,7 @@ import {
     TouchableOpacity,
     Modal,
     FlatList,
+    TextInput,
 
 } from 'react-native';
 
@@ -21,15 +22,6 @@ export class ModalContacto extends Component {
         this.state = {
     }
     }
-
-    // renderItem = ({comment}) => {
-    //     return(
-    //         <View>
-    //             <Text  > Comentarios </Text>
-
-    //         </View>
-    //     )};
-
 
     render() {
         return(
@@ -67,6 +59,18 @@ export class ModalContacto extends Component {
 
                             <View>
                                <Text style={styles.commentH1}>Comentarios</Text> 
+
+                               <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
+                                    <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar comentario" />
+                                    {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
+                                    <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]}>
+                                        <View style={styles.boton}>
+                                            <Text style={styles.botonText}>Comentar</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                            </View>
+                                
+                            
                             {/* <FlatList
                                 data = { this.props.comentarios }
                                 keyExtractor= { this.keyExtractor }

@@ -77,10 +77,11 @@ export class ImportarContactos extends Component {
 
     render() {
         return(
-            <View style={{flex:1}}>
+        <View style={{flex:1}}>
 
             {/* Header de la screen */}
             <Header titulo={"Importar Contactos"} navigation={this.props.navigation}/>
+            
             <ScrollView>
                 <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
                     <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}/>
@@ -100,7 +101,6 @@ export class ImportarContactos extends Component {
                         colo="red"/>
                 }
                 
-
             </ScrollView>
 
             <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
