@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
      //labelStyle: {fontSize:30, fontWeight: 'bold'},
    },
     input: {
-      margin: 14,
       height: 60,
       borderRadius: 4,
       justifyContent: "center",
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
     },
     boton: {
       alignItems: "center",
-      alignSelf: "center",
+      alignSelf: "flex-end",
       backgroundColor: "#961515",
       borderRadius: 4,
       padding: 16,

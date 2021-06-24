@@ -76,10 +76,10 @@ export class MisContactos extends Component {
             <Header titulo={"Mis contactos"} navigation={this.props.navigation}/>
 
             {/* El cant handler se ocupa de pedirle cierta cantidad de usuarios a la api? */}
-            <View style={[{display:'flex'},{flexDirection:'row'},{margin:14}, {justifyContent:'space-between'},{alignContent:'center'}]}>
-                <TextInput style={[styles.input,{flex:3}]} placeholder="Buscar" onChangeText={text => this.setState({busquedaHandler: text})}/>
+            <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
+                <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Buscar" onChangeText={text => this.setState({busquedaHandler: text})}/>
                 {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
-                <TouchableOpacity style={[{flex:2},{alignSelf: 'center'},{elevation:2}]}>
+                <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]}>
                     <View style={styles.boton}>
                         <Text style={styles.botonText}>Buscar</Text>
                     </View>
