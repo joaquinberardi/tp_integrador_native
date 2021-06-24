@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
       lineHeight: 50,
     },
     p: {
-      fontSize: 16,
+      fontSize: 20,
       lineHeight: 30,
     },
     h1:{
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     listCard:{
       marginTop:22,
       marginHorizontal: 5,
-      height: 220,
+      height: 250,
       width: 165,
       borderRadius: 4,
       shadowColor: "#000",
@@ -199,19 +199,34 @@ const styles = StyleSheet.create({
       display: 'flex',
     },
     modal:{
-      backgroundColor: 'blue',
-      padding:14,
+      padding:30,
     },
     modalImage:{
       width: 140 ,
       height: 140,
       borderRadius: 4,
     },
+    closeModal:{
+      display: "flex",
+      alignContent: "flex-end",
+      fontSize: 25,
+      color: "#B71C1C",
+      fontWeight: "bold",
+    },
     modalHeader:{
       flexDirection: 'row',
       justifyContent: "space-between" ,
-      paddingBottom: 14,
-    }
+      paddingVertical: 20,
+    },
+    modalContent:{
+      paddingVertical: 20,
+    }, 
+    commentH1:{
+      fontSize: 22,
+      fontWeight: "bold",
+      includeFontPadding: false, 
+      paddingVertical:14,
+    },
   });
 
   export {styles};

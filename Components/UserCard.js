@@ -24,15 +24,6 @@ export class UserCard extends Component {
         };
     }
 
-    // addContact = () => {
-    //     if (selected){
-    //         getLocal('localUsers').then((storage)=>{
-    //             let users = storage.push(this.props.contacto)
-    //             storeLocal('localUsers', users)
-    //         })
-    //     }
-    // }
-
     render() {
         return(
         // <TouchableOpacity onPress={()=>{this.setState({selected: !this.state.selected})}}>

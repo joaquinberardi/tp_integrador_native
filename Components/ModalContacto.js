@@ -33,20 +33,18 @@ export class ModalContacto extends Component {
 
     render() {
         return(
-            <Modal visible= {this.props.Modal} >
+            <Modal visible= {this.props.Modal} animationType= {"slide"} >
                     <View style={styles.modalContainer}>
                         <View style={styles.modal}>
                             {this.props.selectItem && 
                             
                             <>
 
-                            <View>
-                                <TouchableOpacity onPress={ () => this.props.closeModal()}>
-                                    <View>
-                                        <Text style={styles.h1}> X </Text>
+                            <TouchableOpacity onPress={ () => this.props.closeModal()}>
+                                    <View >
+                                        <Text style={styles.closeModal}> X </Text>
                                     </View>
-                                </TouchableOpacity>
-                            </View>
+                            </TouchableOpacity>
 
                             <View style={styles.modalHeader}>
                                 <Image style= {styles.modalImage} source={{uri: this.props.selectItem.picture.thumbnail}}/>
@@ -68,7 +66,7 @@ export class ModalContacto extends Component {
                             </View>
 
                             <View>
-                               <Text style={styles.h1}> Comentarios </Text> 
+                               <Text style={styles.commentH1}>Comentarios</Text> 
                             {/* <FlatList
                                 data = { this.props.comentarios }
                                 keyExtractor= { this.keyExtractor }

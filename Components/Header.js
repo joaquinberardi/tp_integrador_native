@@ -26,7 +26,7 @@ export class Header extends Component {
         <View style= {styles.header}>
                 <View style={styles.burgerButton}>
                     <TouchableOpacity onPress={ () => this.props.navigation.openDrawer()}>
-                                <Image style={styles.IconBurger} source={require('../src/Icons/Menu.png')}/>
+                                {/* <Image style={styles.IconBurger} source={require('../src/Icons/Menu.png')}/> */}
                     </TouchableOpacity>
                 </View>
                 <Text style= {styles.h1header}> {this.props.titulo}</Text>

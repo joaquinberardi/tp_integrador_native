@@ -81,7 +81,7 @@ export class MisContactos extends Component {
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('localUsers').then((users)=>{this.setState({users: users})})}}>
                 <View >
-                    <Image style={styles.IconSynchronize} source={require('../src/Icons/Synchronize.png')}/>
+                    {/* <Image style={styles.IconSynchronize} source={require('../src/Icons/')}/> */}
                     <Text style={styles.botonText}>Cargar datos</Text>
                 </View>
             </TouchableOpacity>
