@@ -24,14 +24,8 @@ export class AcercaDe extends Component {
         return(
         <View>
             
-            <View style= {styles.header}>
-                <View style={styles.burgerButton}>
-                    <TouchableOpacity onPress={ () => this.props.navigation.openDrawer()}>
-                                <Image style={styles.IconBurger} source={require('../src/Icons/BurgerIcon.png')}/>
-                    </TouchableOpacity>
-                </View>
-                <Text style= {styles.h1header}> Acerca de </Text>
-            </View>
+            {/* Header de la screen */}
+            <Header titulo={"Acerca de"} navigation={this.props.navigation}/>
 
             <View style={styles.listViewContainer}>
                 <View style={styles.listViewHeader}> 

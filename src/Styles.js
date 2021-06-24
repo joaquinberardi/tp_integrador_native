@@ -44,6 +44,8 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
     },
     botonGuardarContactos: {
+      display:"flex",
+      flexDirection:"row",
       position: 'absolute',  
       bottom: 0,
       zIndex: 100,
@@ -57,6 +59,11 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.5,
       shadowRadius: 5,
       elevation: 5,
+    },
+    IconSynchronize:{
+      display: "flex",
+      width: "20",
+      height: "20",
     },
     contenedorDetallesUserCard:{
       display: "flex",
@@ -190,7 +197,6 @@ const styles = StyleSheet.create({
     },
     modalContainer:{
       display: 'flex',
-      backgroundColor: "red",
     },
     modal:{
       backgroundColor: 'blue',
@@ -199,10 +205,12 @@ const styles = StyleSheet.create({
     modalImage:{
       width: 140 ,
       height: 140,
+      borderRadius: 4,
     },
     modalHeader:{
       flexDirection: 'row',
-      justifyContent: 'center'
+      justifyContent: "space-between" ,
+      paddingBottom: 14,
     }
   });
 

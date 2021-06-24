@@ -9,6 +9,7 @@ import {
     Image,
     TouchableOpacity,
     Modal,
+    FlatList,
 
 } from 'react-native';
 
@@ -20,6 +21,15 @@ export class ModalContacto extends Component {
         this.state = {
     }
     }
+
+    // renderItem = ({comment}) => {
+    //     return(
+    //         <View>
+    //             <Text  > Comentarios </Text>
+
+    //         </View>
+    //     )};
+
 
     render() {
         return(
@@ -56,6 +66,17 @@ export class ModalContacto extends Component {
                                 <Text style={styles.p}>Telefono: {this.props.selectItem.phone}</Text>
                                 <Text style={styles.p}>Celular: {this.props.selectItem.cell}</Text>
                             </View>
+
+                            <View>
+                               <Text style={styles.h1}> Comentarios </Text> 
+                            {/* <FlatList
+                                data = { this.props.comentarios }
+                                keyExtractor= { this.keyExtractor }
+                                renderItem= { this.renderItem }
+                                contentContainerStyle= {styles.listComments}
+                            /> */}
+                            </View>
+
 
                             </>
                             }

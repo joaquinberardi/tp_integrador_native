@@ -58,6 +58,14 @@ export class MisContactos extends Component {
         this.setState({Modal: false})
     }
 
+    addComment = (key,comment) => {
+        let user = this.state.users.filter((user) => {return user.login.uuid === key})
+        getLocal('localUsers').then((users) => {
+            users = users.user.concat(comment)
+            storeLocal('localUsers', users)
+        })
+    }
+
     render() {
 
         return(
@@ -73,11 +81,12 @@ export class MisContactos extends Component {
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('localUsers').then((users)=>{this.setState({users: users})})}}>
                 <View >
+                    <Image style={styles.IconSynchronize} source={require('../src/Icons/Synchronize.png')}/>
                     <Text style={styles.botonText}>Cargar datos</Text>
                 </View>
             </TouchableOpacity>
 
-            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
+            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addContact={this.addComment} />
 
 
         </View>
