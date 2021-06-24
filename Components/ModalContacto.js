@@ -30,6 +30,7 @@ export class ModalContacto extends Component {
         getLocal(this.props.selectItem.login.uuid).then(
             (comments)=>{
                 this.setState({comments: comments})
+                console.log(this.state.comments)
             }
         )
     }
@@ -107,12 +108,6 @@ export class ModalContacto extends Component {
                                 renderItem = { this.renderItem }
                                 contentContainerStyle = {styles.listComments}
                             />
-
-                            { this.state.comments.map(
-                                (comment) => {
-                                    <Text style={styles.p}> " {comment} " </Text>
-                                }
-                            ) }
 
                             <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress={()=>{this.updateComments()}}>
                                 <View style={styles.boton}>
