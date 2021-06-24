@@ -11,6 +11,7 @@ import {
     Modal,
     FlatList,
     TextInput,
+    ScrollView
 
 } from 'react-native';
 import { getLocal } from '../api/getLocal';
@@ -45,7 +46,7 @@ export class ModalContacto extends Component {
         return(
             <Modal visible= {this.props.Modal} animationType= {"slide"} >
                     <View style={styles.modalContainer}>
-                        <View style={styles.modal}>
+                        <ScrollView style={styles.modal}>
                             {this.props.selectItem && 
                             
                             <>
@@ -56,7 +57,7 @@ export class ModalContacto extends Component {
                                     <Text style={styles.closeModal}>Editar</Text>
                                 </View>
                             </TouchableOpacity>
-                                <TouchableOpacity style={[{alignSelf: 'flex-end'},{marginVertical:15}]} onPress={ () => this.props.closeModal()}>
+                                <TouchableOpacity style={[{alignSelf: 'flex-end'},{marginVertical:15}]} onPress={ () => {this.setState({comments: []}); this.props.closeModal() }}>
                                 <View style={styles.textIconContainer}>
                                             <Text style={styles.closeModal}>Volver</Text>
                                             <Image style={[styles.icono,{marginLeft:10}]} source={require('../src/Icons/Close.png')}/>
@@ -97,6 +98,7 @@ export class ModalContacto extends Component {
                                             <Text style={styles.botonText}>Comentar</Text>
                                         </View>
                                     </TouchableOpacity>
+
                                     
                             </View>
                             
@@ -107,12 +109,6 @@ export class ModalContacto extends Component {
                                 renderItem = { this.renderItem }
                                 contentContainerStyle = {styles.listComments}
                             />
-
-                            { this.state.comments.map(
-                                (comment) => {
-                                    <Text style={styles.p}> " {comment} " </Text>
-                                }
-                            ) }
 
                             <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress={()=>{this.updateComments()}}>
                                 <View style={styles.boton}>
@@ -125,7 +121,7 @@ export class ModalContacto extends Component {
 
                             </>
                             }
-                        </View>
+                        </ScrollView>
                     </View>
             </Modal>
     )}

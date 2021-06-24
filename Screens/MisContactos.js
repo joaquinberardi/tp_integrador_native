@@ -44,6 +44,7 @@ export class MisContactos extends Component {
             storeLocal('recycleBin', deletedUsers)
             let users = this.state.users.filter((user) => {return user.login.uuid !== key})
             this.setState({users: users})
+            this.setState({filteredUsers: users})
         })
     }
 
