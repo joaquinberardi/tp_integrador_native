@@ -43,8 +43,8 @@ export class MisContactos extends Component {
             let deletedUsers = bin.concat(user)
             storeLocal('recycleBin', deletedUsers)
         })
-        getLocal('localUsers').then((users) => {
-            let users = users.filter((user) => {return user.login.uuid !== key})
+        getLocal('localUsers').then((db) => {
+            let users = db.filter((user) => {return user.login.uuid !== key})
             this.setState({users: users})
             this.setState({filteredUsers: users})
             storeLocal('localUsers', users)
