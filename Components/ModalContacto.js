@@ -40,9 +40,9 @@ export class ModalContacto extends Component {
                             
                             <>
 
-                            <TouchableOpacity onPress={ () => this.props.closeModal()}>
+                            <TouchableOpacity style={[{alignSelf: 'flex-end'},{margin:15}]}onPress={ () => this.props.closeModal()}>
                                     <View >
-                                        <Text style={styles.closeModal}> X </Text>
+                                        <Text style={styles.closeModal}>Volver</Text>
                                     </View>
                             </TouchableOpacity>
 

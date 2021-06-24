@@ -31,21 +31,19 @@ const styles = StyleSheet.create({
       padding: 16,
     },
     botonText:{
-      justifyContent: "center",
-      textAlign: "center",
+      alignSelf: 'center',
+      justifyContent: 'center',
       fontSize: 18,
       includeFontPadding: false,
       color: "#FFFFFF",
       fontWeight: "bold",
     },
     botonGuardarContactos: {
-      display:"flex",
-      flexDirection:"row",
-      position: 'absolute',  
+      position: 'relative',  
       bottom: 0,
       zIndex: 100,
       alignItems: "center",
-      alignSelf: "center",
+      textAlign: "center",
       backgroundColor: "#961515",
       borderRadius: 4,
       margin: 14,
@@ -55,10 +53,18 @@ const styles = StyleSheet.create({
       shadowRadius: 5,
       elevation: 5,
     },
-    IconSynchronize:{
-      display: "flex",
-      width: "20",
-      height: "20",
+    textIconContainer:{
+      display:'flex',
+      flexDirection:'row',
+      justifyContent:"center",
+      alignContent:'center',
+    },
+    icono:{
+      width: 35,
+      height: 35,
+      marginLeft: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     contenedorDetallesUserCard:{
       display: "flex",
@@ -167,7 +173,8 @@ const styles = StyleSheet.create({
     listContent:{
       justifyContent:'center',
       alignItems:'center',
-    },
+      marginBottom:35,
+      },
     listCard:{
       marginTop:25,
       marginHorizontal: 5,

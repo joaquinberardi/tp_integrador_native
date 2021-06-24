@@ -10,6 +10,7 @@ import {
     Image,
     Modal,
     ActivityIndicator,
+    ScrollView,
 } from 'react-native';
 
 import {ListadeContactos} from '../Components/ListadeContactos';
@@ -80,38 +81,39 @@ export class ImportarContactos extends Component {
 
             {/* Header de la screen */}
             <Header titulo={"Importar Contactos"} navigation={this.props.navigation}/>
-            
-
-
-            <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
-            <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}/>
-            {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
-            {/* Que seria el cant:?*/}
-            <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress= { () => this.addContacts(this.state.cantHandler)}>
-            <View style={[styles.boton,{flex:2}]}>
-                    <Text style={styles.botonText}  >Agregar</Text>
+            <ScrollView>
+                <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
+                    <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}/>
+                    {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
+                    <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress= { () => this.addContacts(this.state.cantHandler)}>
+                    <View style={styles.boton}>
+                        <Text style={styles.botonText}>Agregar</Text>
+                    </View>
+                    </TouchableOpacity>
                 </View>
-            </TouchableOpacity>
-            </View>
-            
-            {/* Esta lista debe mostrar los contactos que traemos de la API */}
-            <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} showModal = {this.showModal} deleteContact={this.deleteContact}/>
-            { this.state.activity &&
-            <ActivityIndicator
-                    size="large"
-                    colo="red"/>
-            }
-            {/* Esta boton debe guardar los contactos que traemos de la API */}
-            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => storeLocal('localUsers', this.state.users)}>
-                <View >
-                    <Text style={styles.botonText}>Guardar contactos</Text>
-                </View>
-            </TouchableOpacity>
+                
+                {/* Esta lista debe mostrar los contactos que traemos de la API */}
+                <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} showModal = {this.showModal} deleteContact={this.deleteContact}/>
+                { this.state.activity &&
+                <ActivityIndicator
+                        size="large"
+                        colo="red"/>
+                }
+                
+
+            </ScrollView>
 
             <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
-
-
-
+            
+            {/* Esta boton debe guardar los contactos que traemos de la API */}
+            <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>
+                <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => storeLocal('localUsers', this.state.users)}>
+                    <View style={styles.textIconContainer}>
+                        <Text style={[{alignSelf: 'center'}, {justifyContent: 'center'},styles.botonText]}>Guardar contactos</Text>
+                        <Image style={styles.icono} source={require('../src/Icons/Download.png')}/>
+                    </View>
+                </TouchableOpacity>
+            </View>
         </View>
     )}
 }

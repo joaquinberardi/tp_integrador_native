@@ -11,6 +11,7 @@ import {
     TextInput,
     TouchableOpacity,
     Image,
+    ScrollView,
 } from 'react-native';
 
 import {ListadeContactos} from '../Components/ListadeContactos';
@@ -74,7 +75,9 @@ export class MisContactos extends Component {
             {/* <Header titulo = {"Mis Contactos"} /> */}
             
             <Header titulo={"Mis contactos"} navigation={this.props.navigation}/>
-
+            
+            <ScrollView>
+            
             {/* El cant handler se ocupa de pedirle cierta cantidad de usuarios a la api? */}
             <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
                 <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Buscar" onChangeText={text => this.setState({busquedaHandler: text})}/>
@@ -90,16 +93,22 @@ export class MisContactos extends Component {
             {/* Esta lista debe mostrar los contactos guardados en local storage */}
             <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.users} deleteContact={this.deleteContact}  showModal = {this.showModal}/>
 
-            {/* Esta boton debe guardar los contactos que traemos de la API */}
-            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('localUsers').then((users)=>{this.setState({users: users})})}}>
-                <View >
-                    {/* <Image style={styles.IconSynchronize} source={require('../src/Icons/')}/> */}
-                    <Text style={styles.botonText}>Cargar datos</Text>
-                </View>
-            </TouchableOpacity>
-
+            </ScrollView>
+            
             <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addContact={this.addComment} />
 
+            {/* Esta boton debe guardar los contactos que traemos de la API */}
+            <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>
+                <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => {getLocal('localUsers').then((users)=>{this.setState({users: users})})}}>
+                        <View style={styles.textIconContainer}>
+                            <Text style={[{alignSelf: 'center'}, {justifyContent: 'center'},styles.botonText]}>Cargar contactos</Text>
+                            <Image style={styles.icono} source={require('../src/Icons/Synchronize.png')}/>
+                        </View>
+                </TouchableOpacity>
+            </View>
+
+
+            
 
         </View>
     )}
