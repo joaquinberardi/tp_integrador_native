@@ -12,6 +12,7 @@ import {
     TouchableOpacity,
     Image,
     ScrollView,
+    SafeAreaView 
 } from 'react-native';
 
 import {ListadeContactos} from '../Components/ListadeContactos';
@@ -83,8 +84,8 @@ export class MisContactos extends Component {
             
             <Header titulo={"Mis contactos"} navigation={this.props.navigation}/>
             
+
             <ScrollView>
-            
             {/* El cant handler se ocupa de pedirle cierta cantidad de usuarios a la api? */}
             <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
                 <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Buscar" onChangeText={text => this.setState({busquedaHandler: text})}/>
@@ -101,6 +102,7 @@ export class MisContactos extends Component {
             <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.filteredUsers} deleteContact={this.deleteContact}  showModal = {this.showModal}/>
 
             </ScrollView>
+
             
             <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addContact={this.addComment} />
 

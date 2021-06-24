@@ -10,6 +10,7 @@ import {
     TextInput,
     TouchableOpacity,
     Image,
+    ScrollView,
 } from 'react-native';
 
 import {ListadeContactos} from '../Components/ListadeContactos';
@@ -49,14 +50,21 @@ export class PapeleraDeReciclaje extends Component {
             
             <Header titulo={"Papelera de reciclaje"} navigation={this.props.navigation}/>
 
-            <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users}  showModal = {this.showModal}/>
+            <ScrollView>
+                <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users}  showModal = {this.showModal}/>
+            </ScrollView>
+            
             <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
 
-            <TouchableOpacity  style={styles.botonGuardarContactos} onPress={() => {getLocal('recycleBin').then((users)=>{this.setState({users: users})})}}>
-                <View>
-                    <Text style={styles.botonText}>Cargar datos</Text>
-                </View>
-            </TouchableOpacity>
+            {/* Esta boton debe guardar los contactos que traemos de la API */}
+            <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>
+                <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => {getLocal('recycleBin').then((users)=>{this.setState({users: users})})}}>
+                        <View style={styles.textIconContainer}>
+                            <Text style={[{alignSelf: 'center'}, {justifyContent: 'center'},styles.botonText]}>Cargar contactos</Text>
+                            <Image style={styles.icono} source={require('../src/Icons/Synchronize.png')}/>
+                        </View>
+                </TouchableOpacity>
+            </View>
 
 
         </View>
