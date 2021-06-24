@@ -37,10 +37,6 @@ export class MisContactos extends Component {
         }
     }
 
-    componentDidMount(){
-        //getLocal('localUsers').then((users) => {this.setState({users: users})})
-    }
-
     deleteContact = (key) => {
         let user = this.state.users.filter((user) => {return user.login.uuid === key})
         getLocal('recycleBin').then((bin) => {
@@ -63,7 +59,7 @@ export class MisContactos extends Component {
 
     addComment = (key,comment) => {
         getLocal(key).then((comments) => {
-            comments = comments + "/" + comment
+            comments = comments.concat(comment)
             storeLocal(key, comments)
         })
     }

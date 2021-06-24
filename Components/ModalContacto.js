@@ -13,6 +13,7 @@ import {
     TextInput,
 
 } from 'react-native';
+import { getLocal } from '../api/getLocal';
 
 import {styles} from '../src/Styles';
 
@@ -20,18 +21,25 @@ export class ModalContacto extends Component {
     constructor(props){
         super(props);
         this.state = {
-            commentHandler: ""
+            commentHandler: "",
+            comments: [],
         }
+    }
+
+    updateComments = () => {
+        getLocal(this.props.selectItem.login.uuid).then(
+            (comments)=>{
+                this.setState({comments: comments})
+            }
+        )
     }
 
     renderItem = ({comment}) => {
         return(
-            <Text style={styles.p}> Comentario: {comment} </Text>
+            <Text style={styles.p}> " {comment} " </Text>
         )};
 
-    keyExtractor = (item, idx) => {
-        return idx
-    };
+    keyExtractor = (item, idx) => { return idx.toString() }
 
     render() {
         return(
@@ -89,15 +97,29 @@ export class ModalContacto extends Component {
                                             <Text style={styles.botonText}>Comentar</Text>
                                         </View>
                                     </TouchableOpacity>
+                                    
                             </View>
-                                
+                            
                             
                             <FlatList
-                                data = { this.props.comentarios }
+                                data = { this.state.comments }
                                 keyExtractor = { this.keyExtractor }
                                 renderItem = { this.renderItem }
                                 contentContainerStyle = {styles.listComments}
                             />
+
+                            { this.state.comments.map(
+                                (comment) => {
+                                    <Text style={styles.p}> " {comment} " </Text>
+                                }
+                            ) }
+
+                            <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress={()=>{this.updateComments()}}>
+                                <View style={styles.boton}>
+                                    <Text style={styles.botonText}>Cargar comentarios</Text>
+                                </View>
+                            </TouchableOpacity>
+
                             </View>
 
 
