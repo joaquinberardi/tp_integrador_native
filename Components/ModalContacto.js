@@ -26,7 +26,7 @@ export class ModalContacto extends Component {
 
     renderItem = ({comment}) => {
         return(
-            <Comment comment={comment}/>
+            <Text style={styles.p}> Comentario: {comment} </Text>
         )};
 
     keyExtractor = (item, idx) => {
@@ -98,7 +98,6 @@ export class ModalContacto extends Component {
                                 renderItem = { this.renderItem }
                                 contentContainerStyle = {styles.listComments}
                             />
-
                             </View>
 
 
