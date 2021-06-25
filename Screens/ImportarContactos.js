@@ -84,9 +84,9 @@ export class ImportarContactos extends Component {
                     <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar Cantidad" onChangeText={text => this.setState({cantHandler: text})}/>
                     {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
                     <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress= { () => this.addContacts(this.state.cantHandler)}>
-                    <View style={styles.boton}>
-                        <Text style={styles.botonText}>Agregar</Text>
-                    </View>
+                        <View style={styles.boton}>
+                            <Text style={styles.botonText}>Agregar</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
                 
@@ -95,7 +95,7 @@ export class ImportarContactos extends Component {
                 { this.state.activity &&
                 <ActivityIndicator
                     size="large"
-                    colo="red"/>
+                    color="red"/>
                 }
                 
             </ScrollView>
