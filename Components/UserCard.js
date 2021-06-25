@@ -1,28 +1,15 @@
-
-
-// Este componente debera mostrar en formato card el detalle del contacto
-
 import React, { Component } from 'react';
 import {
     View,
     Text,
     Image,
     TouchableOpacity,
-    Modal,
-
 } from 'react-native';
 
 import {styles} from '../src/Styles';
-import {storeLocal} from '../api/storeLocal';
-import {getLocal} from '../api/getLocal';
 
 export class UserCard extends Component {
-    constructor(){
-        super();
-        this.state = {
-        };
-    }
-
+    
     render() {
         if (!this.props.bin) {
             return(
