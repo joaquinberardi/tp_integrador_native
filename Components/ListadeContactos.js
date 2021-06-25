@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 
 import{UserCard} from './UserCard'
-import{BinUserCard} from './BinUserCard'
 import {styles} from '../src/Styles';
 
 export class ListadeContactos extends Component {
@@ -28,7 +27,7 @@ export class ListadeContactos extends Component {
 
     renderItem = ({item}) => {
         return(
-            <UserCard contacto={item} showModal={this.props.showModal} deleteContact={this.props.deleteContact}/>
+            <UserCard contacto={item} bin={this.props.bin} showModal={this.props.showModal} deleteContact={this.props.deleteContact} recoverContact={this.props.recoverContact}/>
         )};
 
     keyExtractor = (item) => {

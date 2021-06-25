@@ -13,7 +13,7 @@ import {
     ScrollView,
 } from 'react-native';
 
-import {ListadePapelera} from '../Components/ListadePapelera';
+import {ListadeContactos} from '../Components/ListadeContactos';
 import {Header} from '../Components/Header';
 import {getLocal} from '../api/getLocal';
 import {ModalContacto} from '../Components/ModalContacto';
@@ -69,7 +69,7 @@ export class PapeleraDeReciclaje extends Component {
             <Header titulo={"Papelera de reciclaje"} navigation={this.props.navigation}/>
 
             <ScrollView>
-                <ListadePapelera titulo={"Contactos eliminados"} usuarios={this.state.users}  showModal = {this.showModal} recoverContact={this.recoverContact}/>
+                <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users} bin={true} showModal = {this.showModal} recoverContact={this.recoverContact}/>
             </ScrollView>
             
             <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
@@ -78,7 +78,7 @@ export class PapeleraDeReciclaje extends Component {
             <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>
                 <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => {getLocal('recycleBin').then((users)=>{this.setState({users: users})})}}>
                         <View style={styles.textIconContainer}>
-                            <Text style={[{alignSelf: 'center'}, {justifyContent: 'center'},styles.botonText]}>Cargar contactos</Text>
+                            <Text style={[{alignSelf: 'center'}, {justifyContent: 'center'},styles.botonText]}>Actualizar</Text>
                             <Image style={styles.icono} source={require('../src/Icons/Synchronize.png')}/>
                         </View>
                 </TouchableOpacity>

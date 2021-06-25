@@ -109,7 +109,7 @@ export class MisContactos extends Component {
             
 
             {/* Esta lista debe mostrar los contactos guardados en local storage */}
-            <ListadeContactos titulo={"Contactos guardados"} usuarios = {this.state.filteredUsers} deleteContact={this.deleteContact}  showModal = {this.showModal}/>
+            <ListadeContactos titulo={"Contactos guardados"} usuarios={this.state.filteredUsers} bin={false} deleteContact={this.deleteContact} showModal = {this.showModal}/>
 
             </ScrollView>
 

@@ -98,7 +98,7 @@ export class ImportarContactos extends Component {
                 </View>
                 
                 {/* Esta lista debe mostrar los contactos que traemos de la API */}
-                <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} showModal = {this.showModal} deleteContact={this.deleteContact}/>
+                <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} bin={false} showModal = {this.showModal} deleteContact={this.deleteContact}/>
                 { this.state.activity &&
                 <ActivityIndicator
                         size="large"
