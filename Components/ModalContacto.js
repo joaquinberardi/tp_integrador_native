@@ -88,7 +88,15 @@ export class ModalContacto extends Component {
                             </View>
 
                             <View>
-                               <Text style={styles.commentH1}>Comentarios</Text> 
+                                <View style={[{display:'flex'},{flexDirection:'row'}, {justifyContent:'space-between'}]}>
+                                    <Text style={styles.commentH1}>Comentarios</Text> 
+                                    <TouchableOpacity style={{alignSelf: "center"}} onPress={()=>{this.updateComments()}}>
+                                        <View  >
+                                            <Text style={[{color:"#B71C1C"},{fontWeight:'bold'}]}>Cargar comentarios</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+
 
                                <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
                                     <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar comentario" onChangeText={text => this.setState({commentHandler: text})} />
@@ -110,11 +118,7 @@ export class ModalContacto extends Component {
                                 contentContainerStyle = {styles.listComments}
                             />
 
-                            <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress={()=>{this.updateComments()}}>
-                                <View style={styles.boton}>
-                                    <Text style={styles.botonText}>Cargar comentarios</Text>
-                                </View>
-                            </TouchableOpacity>
+ 
 
                             </View>
 
