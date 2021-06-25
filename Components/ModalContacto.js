@@ -151,7 +151,7 @@ export class ModalContacto extends Component {
 
                                     {
                                         this.state.comments.map((comment, idx) => {
-                                            return <p key={idx}>"{comment}"</p>
+                                            return <Text key={idx}>"{comment}"</Text>
                                         })
                                     }
         
