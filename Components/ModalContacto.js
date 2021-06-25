@@ -70,13 +70,13 @@ export class ModalContacto extends Component {
         )
     }
 
-    renderItem = ({comment}) => {
-        return(
-        <Text style={styles.p}> " {comment} " </Text>
-        )
-    }
+    // renderItem = ({comment, idx}) => {
+    //     return(
+    //     <Text style={styles.p}> " {comment} " </Text>
+    //     )
+    // }
 
-    keyExtractor = (item, idx) => { return idx.toString() }
+    // keyExtractor = (item, idx) => { return idx.toString() }
 
     render() {
         if(!this.state.edit){
@@ -142,13 +142,19 @@ export class ModalContacto extends Component {
                                             </View>
                                         </TouchableOpacity>
                                     </View>
-                                    
-                                    <FlatList
+
+                                    {/* <FlatList
                                         data = { this.state.comments }
                                         keyExtractor = { this.keyExtractor }
                                         renderItem = { this.renderItem }
                                         contentContainerStyle = {styles.listComments}
-                                    />
+                                    /> */}
+
+                                    {
+                                        this.state.comments.map((comment, idx) => {
+                                            return <p key={idx}>"{comment}"</p>
+                                        })
+                                    }
         
                                 </View>
         
