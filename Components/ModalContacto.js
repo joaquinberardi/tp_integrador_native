@@ -69,14 +69,6 @@ export class ModalContacto extends Component {
         )
     }
 
-    // renderItem = ({comment, idx}) => {
-    //     return(
-    //     <Text style={styles.p}> " {comment} " </Text>
-    //     )
-    // }
-
-    // keyExtractor = (item, idx) => { return idx.toString() }
-
     render() {
         if(!this.state.edit){
             if (this.props.allowEdit) {
@@ -142,13 +134,6 @@ export class ModalContacto extends Component {
                                         </TouchableOpacity>
                                     </View>
 
-                                    {/* <FlatList
-                                        data = { this.state.comments }
-                                        keyExtractor = { this.keyExtractor }
-                                        renderItem = { this.renderItem }
-                                        contentContainerStyle = {styles.listComments}
-                                    /> */}
-
                                     {
                                         this.state.comments.map((comment, idx) => {
                                             return <Text key={idx}>"{comment}"</Text>
@@ -209,7 +194,7 @@ export class ModalContacto extends Component {
                                         </TouchableOpacity>
                                     </View>
         
-        
+                                    
                                     <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
                                         <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar comentario" onChangeText={text => this.setState({commentHandler: text})} />
                                             {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
@@ -219,13 +204,12 @@ export class ModalContacto extends Component {
                                             </View>
                                         </TouchableOpacity>
                                     </View>
-                                    
-                                    <FlatList
-                                        data = { this.state.comments }
-                                        keyExtractor = { this.keyExtractor }
-                                        renderItem = { this.renderItem }
-                                        contentContainerStyle = {styles.listComments}
-                                    />
+
+                                    {
+                                        this.state.comments.map((comment, idx) => {
+                                            return <Text key={idx}>"{comment}"</Text>
+                                        })
+                                    }
         
                                 </View>
         
