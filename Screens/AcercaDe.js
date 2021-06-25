@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {styles} from '../src/Styles';
+import {Header} from '../Components/Header'
 
 import {
     View,

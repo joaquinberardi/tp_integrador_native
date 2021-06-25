@@ -38,6 +38,14 @@ export class MisContactos extends Component {
         }
     }
 
+    updateContact = (newUser) => {
+        let users = this.state.users.filter((user) => {return user.login.uuid !== newUser.login.uuid})
+        users = users.concat(newUser)
+        this.setState({users: users})
+        this.setState({filteredUsers: this.state.users})
+        storeLocal('localUsers', users)
+    }
+
     deleteContact = (key) => {
         let user = this.state.users.filter((user) => {return user.login.uuid === key})
         getLocal('recycleBin').then((bin) => {
@@ -106,7 +114,7 @@ export class MisContactos extends Component {
             </ScrollView>
 
             
-            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addComment={this.addComment} />
+            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addComment={this.addComment} updateContact={this.updateContact}/>
             
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>

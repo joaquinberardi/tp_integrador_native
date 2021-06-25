@@ -26,8 +26,6 @@ export class ModalContacto extends Component {
             comments: [],
             edit: false,
 
-            user: this.props.selectItem,
-
             emailHandler: "",
             countryHandler: "",
             cityHandler: "",
@@ -37,6 +35,35 @@ export class ModalContacto extends Component {
             phoneHandler: "",
             cellHandler: "",
         }
+    }
+
+    editMode = () => {
+        this.setState({edit: true})
+        this.setState({
+            emailHandler: this.props.selectItem.email,
+            countryHandler: this.props.selectItem.location.country,
+            cityHandler: this.props.selectItem.location.city,
+            streetHandler: this.props.selectItem.location.street.name,
+            numberHandler: this.props.selectItem.location.street.number,
+            postcodeHandler: this.props.selectItem.location.postcode,
+            phoneHandler: this.props.selectItem.phone,
+            cellHandler: this.props.selectItem.cell,
+        })
+    }
+
+    updateInfo = () => {
+        let user = this.props.selectItem
+        user.email = this.state.emailHandler
+        user.location.country = this.state.countryHandler
+        user.location.city = this.state.cityHandler
+        user.location.street.name = this.state.streetHandler
+        user.location.street.number = this.state.numberHandler
+        user.location.postcode = this.state.postcodeHandler
+        user.cell = this.state.cellHandler
+        user.phone = this.state.phoneHandler
+
+        this.props.updateContact(user)
+        this.setState({edit: false})
     }
 
     updateComments = () => {
@@ -65,7 +92,7 @@ export class ModalContacto extends Component {
                                 
                                 <>
                                 <View style={[{justifyContent: "space-between"},{display: "flex"},{ flexDirection: "row"}]}>
-                                <TouchableOpacity style={[{alignSelf: 'flex-start'},{marginVertical:15}]} onPress= { () => this.setState({edit: true})}>
+                                <TouchableOpacity style={[{alignSelf: 'flex-start'},{marginVertical:15}]} onPress= { () => this.editMode()}>
                                     <View style={styles.textIconContainer}>
                                         <Image style={[styles.icono,{marginRight:10}]} source={require('../src/Icons/Edit.png')}/>
                                         <Text style={styles.closeModal}>Editar</Text>
@@ -115,7 +142,7 @@ export class ModalContacto extends Component {
                                    <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
                                         <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar comentario" onChangeText={text => this.setState({commentHandler: text})} />
                                         {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
-                                        <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress={()=>{this.props.addComment(this.props.selectItem.login.uuid, this.state.commentHandler.parse())}}>
+                                        <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress={()=>{this.props.addComment(this.props.selectItem.login.uuid, this.state.commentHandler)}}>
                                             <View style={styles.boton}>
                                                 <Text style={styles.botonText}>Comentar</Text>
                                             </View>
@@ -152,13 +179,13 @@ export class ModalContacto extends Component {
                                 
                                 <>
                                 <View style={[{justifyContent: "space-between"},{display: "flex"},{ flexDirection: "row"}]}>
-                                <TouchableOpacity style={[{alignSelf: 'flex-start'},{marginVertical:15}]}>
+                                <TouchableOpacity style={[{alignSelf: 'flex-start'},{marginVertical:15}]} onPress={ () => {this.updateInfo()}}>
                                     <View style={styles.textIconContainer}>
                                         <Image style={[styles.icono,{marginRight:10}]} source={require('../src/Icons/Save.png')}/>
                                         <Text style={styles.closeModal}>Guardar</Text>
                                     </View>
                                 </TouchableOpacity>
-                                    <TouchableOpacity style={[{alignSelf: 'flex-end'},{marginVertical:15}]} onPress={ () => {this.props.showEdit(this.props.selectItem.login.uuid) }}>
+                                    <TouchableOpacity style={[{alignSelf: 'flex-end'},{marginVertical:15}]} onPress={ () => {this.setState({edit: false})}}>
                                     <View style={styles.textIconContainer}>
                                                 <Text style={styles.closeModal}>Volver</Text>
                                                 <Image style={[styles.icono,{marginLeft:10}]} source={require('../src/Icons/Close.png')}/>

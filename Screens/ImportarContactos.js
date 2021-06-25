@@ -35,9 +35,17 @@ export class ImportarContactos extends Component {
     }
 
     componentDidMount(){
-        getAPI(10)
+        getAPI(6)
         .then( (usuarios) => {
             this.setState({users: usuarios, activity: false});
+        })
+    }
+
+    importContacts = () => {
+        getLocal('localUsers').then((db) => {
+            let users = db.concat(this.state.users)
+            storeLocal('localUsers', users)
+            this.setState({users: []})
         })
     }
 
@@ -102,7 +110,7 @@ export class ImportarContactos extends Component {
             
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>
-                <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => storeLocal('localUsers', this.state.users)}>
+                <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => {this.importContacts()}}>
                     <View style={styles.textIconContainer}>
                         <Text style={[{alignSelf: 'center'}, {justifyContent: 'center'},styles.botonText]}>Guardar contactos</Text>
                         <Image style={styles.icono} source={require('../src/Icons/Download.png')}/>
