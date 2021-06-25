@@ -15,7 +15,7 @@ import{UserCard} from './UserCard'
 import{BinUserCard} from './BinUserCard'
 import {styles} from '../src/Styles';
 
-export class ListadeContactos extends Component {
+export class ListadePapelera extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -28,7 +28,7 @@ export class ListadeContactos extends Component {
 
     renderItem = ({item}) => {
         return(
-            <UserCard contacto={item} showModal={this.props.showModal} deleteContact={this.props.deleteContact}/>
+            <BinUserCard contacto={item} showModal={this.props.showModal} deleteContact={this.props.deleteContact} recoverContact={this.props.recoverContact} />
         )};
 
     keyExtractor = (item) => {

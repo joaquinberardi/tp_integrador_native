@@ -13,10 +13,11 @@ import {
     ScrollView,
 } from 'react-native';
 
-import {ListadeContactos} from '../Components/ListadeContactos';
+import {ListadePapelera} from '../Components/ListadePapelera';
 import {Header} from '../Components/Header';
 import {getLocal} from '../api/getLocal';
 import {ModalContacto} from '../Components/ModalContacto';
+import { storeLocal } from '../api/storeLocal';
 
 
 export class PapeleraDeReciclaje extends Component {
@@ -43,6 +44,23 @@ export class PapeleraDeReciclaje extends Component {
         this.setState({Modal: false})
     }
 
+    emptyBin = () => {
+        this.setState({users: []})
+        storeLocal('recycleBin', [])
+    }
+
+    recoverContact = (key) => {
+        let user = this.state.users.filter((user) => {return user.login.uuid === key})
+        getLocal('localUsers').then((db) => {
+            let myUsers = db.concat(user)
+            storeLocal('localUsers', myUsers)
+        })
+        getLocal('recycleBin').then((bin) => {
+            let users = bin.filter((user) => {return user.login.uuid !== key})
+            this.setState({users: users})
+            storeLocal('recycleBin', users)
+        })
+    }
 
     render() {
         return(
@@ -51,7 +69,7 @@ export class PapeleraDeReciclaje extends Component {
             <Header titulo={"Papelera de reciclaje"} navigation={this.props.navigation}/>
 
             <ScrollView>
-                <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users}  showModal = {this.showModal}/>
+                <ListadePapelera titulo={"Contactos eliminados"} usuarios={this.state.users}  showModal = {this.showModal} recoverContact={this.recoverContact}/>
             </ScrollView>
             
             <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
@@ -61,6 +79,12 @@ export class PapeleraDeReciclaje extends Component {
                 <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => {getLocal('recycleBin').then((users)=>{this.setState({users: users})})}}>
                         <View style={styles.textIconContainer}>
                             <Text style={[{alignSelf: 'center'}, {justifyContent: 'center'},styles.botonText]}>Cargar contactos</Text>
+                            <Image style={styles.icono} source={require('../src/Icons/Synchronize.png')}/>
+                        </View>
+                </TouchableOpacity>
+                <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => {this.emptyBin()}}>
+                        <View style={styles.textIconContainer}>
+                            <Text style={[{alignSelf: 'center'}, {justifyContent: 'center'},styles.botonText]}>Vaciar Papelera</Text>
                             <Image style={styles.icono} source={require('../src/Icons/Synchronize.png')}/>
                         </View>
                 </TouchableOpacity>

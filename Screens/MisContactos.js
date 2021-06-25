@@ -47,7 +47,7 @@ export class MisContactos extends Component {
         getLocal('localUsers').then((db) => {
             let users = db.filter((user) => {return user.login.uuid !== key})
             this.setState({users: users})
-            this.setState({filteredUsers: users})
+            this.setState({filteredUsers: this.state.users})
             storeLocal('localUsers', users)
         })
     }
