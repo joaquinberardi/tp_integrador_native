@@ -65,7 +65,6 @@ export class ModalContacto extends Component {
         getLocal(this.props.selectItem.login.uuid).then(
             (comments)=>{
                 this.setState({comments: comments})
-                console.log(this.state.comments)
             }
         )
     }

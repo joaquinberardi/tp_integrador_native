@@ -64,8 +64,6 @@ export class MisContactos extends Component {
 
     addComment = (key,comment) => {
         getLocal(key).then((comments) => {
-            console.log(key)
-            console.log(comment)
             comments = comments.concat(comment)
             storeLocal(key, comments)
         })
