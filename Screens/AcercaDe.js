@@ -5,21 +5,10 @@ import {Header} from '../Components/Header'
 import {
     View,
     Text,
-    FlatList,
-    Modal,
-    Button,
-    TextInput,
-    TouchableOpacity,
-    Image,
 } from 'react-native';
 
 
 export class AcercaDe extends Component {
-    constructor(){
-        super();
-        this.state = {
-        }
-    }
 
     render() {
         return(
@@ -38,5 +27,6 @@ export class AcercaDe extends Component {
 
             </View>
         </View>
-    )}
+        )
+    }
 }

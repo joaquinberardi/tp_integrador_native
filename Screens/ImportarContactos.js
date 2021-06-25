@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AsyncStorage, { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import {styles} from '../src/Styles';
 
 import {
@@ -8,7 +7,6 @@ import {
     TextInput,
     TouchableOpacity,
     Image,
-    Modal,
     ActivityIndicator,
     ScrollView,
 } from 'react-native';
@@ -29,8 +27,7 @@ export class ImportarContactos extends Component {
             cantHandler: "",
             users: [],
             selectItem: null,
-            Modal: false,
-            selectedItems: [],
+            modal: false,
             activity: true,
         }
     }
@@ -58,10 +55,6 @@ export class ImportarContactos extends Component {
         })
     }
 
-    // selectContact = (key) => {
-    //     this.setState({selectedItems: this.selectedItems.push()})
-    // }
-
     deleteContact = (key) => {        
         let users = this.state.users.filter((user) => {return user.login.uuid !== key})
         this.setState({users: users})
@@ -72,11 +65,11 @@ export class ImportarContactos extends Component {
     showModal = (key) => {
         let user = this.state.users.filter((user) => { return user.login.uuid === key})
         this.setState({selectItem: user[0]});
-        this.setState({Modal: true});
+        this.setState({modal: true});
     }
 
     closeModal = () => {
-        this.setState({Modal: false})
+        this.setState({modal: false})
     }
 
     render() {
@@ -101,13 +94,13 @@ export class ImportarContactos extends Component {
                 <ListadeContactos titulo={"Contactos encontrados"} usuarios={this.state.users} bin={false} showModal = {this.showModal} deleteContact={this.deleteContact}/>
                 { this.state.activity &&
                 <ActivityIndicator
-                        size="large"
-                        colo="red"/>
+                    size="large"
+                    colo="red"/>
                 }
                 
             </ScrollView>
 
-            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
+            <ModalContacto selectItem={this.state.selectItem} modal={this.state.modal} closeModal={this.closeModal} allowEdit={false} />
             
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>

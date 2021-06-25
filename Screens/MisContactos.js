@@ -114,7 +114,7 @@ export class MisContactos extends Component {
             </ScrollView>
 
             
-            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addComment={this.addComment} updateContact={this.updateContact}/>
+            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addComment={this.addComment} updateContact={this.updateContact} allowEdit={true}/>
             
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>

@@ -72,7 +72,7 @@ export class PapeleraDeReciclaje extends Component {
                 <ListadeContactos titulo={"Contactos eliminados"} usuarios={this.state.users} bin={true} showModal = {this.showModal} recoverContact={this.recoverContact}/>
             </ScrollView>
             
-            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} />
+            <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} allowEdit={false}/>
 
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>
