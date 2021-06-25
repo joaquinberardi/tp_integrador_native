@@ -74,7 +74,6 @@ export class ModalContacto extends Component {
             if (this.props.allowEdit) {
                 return(
                     <Modal visible= {this.props.modal} animationType= {"slide"} >
-                        <View style={styles.modalContainer}>
                             <ScrollView style={styles.modal}>
                                 {this.props.selectItem && 
                                 
@@ -113,7 +112,7 @@ export class ModalContacto extends Component {
                                     <Text style={styles.p}>Celular: {this.props.selectItem.cell}</Text>
                                 </View>
         
-                                <View>
+                                <View style={{marginBottom:50}}>
                                     <View style={[{display:'flex'},{flexDirection:'row'}, {justifyContent:'space-between'}]}>
                                         <Text style={styles.commentH1}>Comentarios</Text> 
                                         <TouchableOpacity style={{alignSelf: "center"}} onPress={()=>{this.updateComments()}}>
@@ -136,7 +135,7 @@ export class ModalContacto extends Component {
 
                                     {
                                         this.state.comments.map((comment, idx) => {
-                                            return <Text key={idx}>"{comment}"</Text>
+                                            return <Text key={idx} style={[styles.p,{marginLeft:14},{marginBottom:8}]}>"{comment}"</Text>
                                         })
                                     }
         
@@ -145,7 +144,6 @@ export class ModalContacto extends Component {
                                 </>
                                 }
                             </ScrollView>
-                        </View>
                     </Modal>
                 )
             } else {
@@ -253,14 +251,14 @@ export class ModalContacto extends Component {
                             </View>
 
                             <View style={styles.modalContent}>
-                                <TextInput defaultValue={ this.props.selectItem.email} onChangeText={text => this.setState({emailHandler: text})} />
-                                <TextInput defaultValue={ this.props.selectItem.location.country } onChangeText={text => this.setState({countryHandler: text})} />
-                                <TextInput defaultValue={this.props.selectItem.location.city } onChangeText={text => this.setState({cityHandler: text})} />
-                                <TextInput defaultValue={ this.props.selectItem.location.street.name } onChangeText={text => this.setState({streetHandler: text})}/>
-                                <TextInput defaultValue={ this.props.selectItem.location.street.number} onChangeText={text => this.setState({numberHandler: text})}/>
-                                <TextInput defaultValue={this.props.selectItem.location.postcode} onChangeText={text => this.setState({postcodeHandler: text})}/>
-                                <TextInput defaultValue={this.props.selectItem.phone} onChangeText={text => this.setState({phoneHandler: text})}/>
-                                <TextInput defaultValue={this.props.selectItem.cell} onChangeText={text => this.setState({cellHandler: text})}/>
+                                <TextInput style={styles.input} defaultValue={ this.props.selectItem.email} onChangeText={text => this.setState({emailHandler: text})} />
+                                <TextInput style={styles.input} defaultValue={ this.props.selectItem.location.country } onChangeText={text => this.setState({countryHandler: text})} />
+                                <TextInput style={styles.input} defaultValue={this.props.selectItem.location.city } onChangeText={text => this.setState({cityHandler: text})} />
+                                <TextInput style={styles.input} defaultValue={ this.props.selectItem.location.street.name } onChangeText={text => this.setState({streetHandler: text})}/>
+                                <TextInput style={styles.input} defaultValue={ this.props.selectItem.location.street.number} onChangeText={text => this.setState({numberHandler: text})}/>
+                                <TextInput style={styles.input} defaultValue={this.props.selectItem.location.postcode} onChangeText={text => this.setState({postcodeHandler: text})}/>
+                                <TextInput style={styles.input} defaultValue={this.props.selectItem.phone} onChangeText={text => this.setState({phoneHandler: text})}/>
+                                <TextInput style={styles.input} defaultValue={this.props.selectItem.cell} onChangeText={text => this.setState({cellHandler: text})}/>
                             </View>
                                 
                             </>
