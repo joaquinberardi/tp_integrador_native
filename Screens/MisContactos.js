@@ -34,6 +34,7 @@ export class MisContactos extends Component {
             filteredUsers: [],
             selectItem: null,
             Modal: false,
+            Edit: false,
         }
     }
 
@@ -106,7 +107,7 @@ export class MisContactos extends Component {
 
             
             <ModalContacto selectItem={this.state.selectItem} Modal={this.state.Modal} closeModal={this.closeModal} addComment={this.addComment} />
-
+            
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>
                 <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => {getLocal('localUsers').then((users)=>{

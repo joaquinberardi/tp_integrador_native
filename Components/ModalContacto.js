@@ -24,6 +24,7 @@ export class ModalContacto extends Component {
         this.state = {
             commentHandler: "",
             comments: [],
+            edit: false,
         }
     }
 
@@ -44,90 +45,143 @@ export class ModalContacto extends Component {
     keyExtractor = (item, idx) => { return idx.toString() }
 
     render() {
-        return(
-            <Modal visible= {this.props.Modal} animationType= {"slide"} >
-                    <View style={styles.modalContainer}>
-                        <ScrollView style={styles.modal}>
-                            {this.props.selectItem && 
-                            
-                            <>
-                            <View style={[{justifyContent: "space-between"},{display: "flex"},{ flexDirection: "row"}]}>
-                            <TouchableOpacity style={[{alignSelf: 'flex-start'},{marginVertical:15}]}>
-                                <View style={styles.textIconContainer}>
-                                    <Image style={[styles.icono,{marginRight:10}]} source={require('../src/Icons/Edit.png')}/>
-                                    <Text style={styles.closeModal}>Editar</Text>
-                                </View>
-                            </TouchableOpacity>
-                                <TouchableOpacity style={[{alignSelf: 'flex-end'},{marginVertical:15}]} onPress={ () => {this.setState({comments: []}); this.props.closeModal() }}>
-                                <View style={styles.textIconContainer}>
-                                            <Text style={styles.closeModal}>Volver</Text>
-                                            <Image style={[styles.icono,{marginLeft:10}]} source={require('../src/Icons/Close.png')}/>
-
-                                        </View>
+        if(!this.state.edit){
+            return(
+                <Modal visible= {this.props.Modal} animationType= {"slide"} >
+                        <View style={styles.modalContainer}>
+                            <ScrollView style={styles.modal}>
+                                {this.props.selectItem && 
+                                
+                                <>
+                                <View style={[{justifyContent: "space-between"},{display: "flex"},{ flexDirection: "row"}]}>
+                                <TouchableOpacity style={[{alignSelf: 'flex-start'},{marginVertical:15}]} onPress= { () => this.setState({edit: true})}>
+                                    <View style={styles.textIconContainer}>
+                                        <Image style={[styles.icono,{marginRight:10}]} source={require('../src/Icons/Edit.png')}/>
+                                        <Text style={styles.closeModal}>Editar</Text>
+                                    </View>
                                 </TouchableOpacity>
-
-                            </View>
-
-
-                            <View style={styles.modalHeader}>
-                                <Image style= {styles.modalImage} source={{uri: this.props.selectItem.picture.thumbnail}}/>
+                                    <TouchableOpacity style={[{alignSelf: 'flex-end'},{marginVertical:15}]} onPress={ () => {this.setState({comments: []}); this.props.closeModal() }}>
+                                    <View style={styles.textIconContainer}>
+                                                <Text style={styles.closeModal}>Volver</Text>
+                                                <Image style={[styles.icono,{marginLeft:10}]} source={require('../src/Icons/Close.png')}/>
+    
+                                            </View>
+                                    </TouchableOpacity>
+    
+                                </View>
+    
+    
+                                <View style={styles.modalHeader}>
+                                    <Image style= {styles.modalImage} source={{uri: this.props.selectItem.picture.thumbnail}}/>
+                                    <View>
+                                        <Text style={styles.h1}> {this.props.selectItem.name.last}, {this.props.selectItem.name.first} </Text>
+                                        <Text style={styles.h1}> {this.props.selectItem.dob.age} Años </Text>
+    
+                                    </View>
+                                </View>
+    
+                                <View style={styles.modalContent}>
+                                    <Text style={styles.p}>Email: {this.props.selectItem.email}</Text>
+                                    <Text style={styles.p}>País: {this.props.selectItem.location.country}</Text>
+                                    <Text style={styles.p}>Ciudad: {this.props.selectItem.location.city}</Text>
+                                    <Text style={styles.p}>Direccion: {this.props.selectItem.location.street.name}{this.props.selectItem.location.street.number}</Text>
+                                    <Text style={styles.p}>Codigo postal: {this.props.selectItem.location.postcode}</Text>
+                                    <Text style={styles.p}>Telefono: {this.props.selectItem.phone}</Text>
+                                    <Text style={styles.p}>Celular: {this.props.selectItem.cell}</Text>
+                                </View>
+    
                                 <View>
-                                    <Text style={styles.h1}> {this.props.selectItem.name.last}, {this.props.selectItem.name.first} </Text>
-                                    <Text style={styles.h1}> {this.props.selectItem.dob.age} Años </Text>
-
+                                    <View style={[{display:'flex'},{flexDirection:'row'}, {justifyContent:'space-between'}]}>
+                                        <Text style={styles.commentH1}>Comentarios</Text> 
+                                        <TouchableOpacity style={{alignSelf: "center"}} onPress={()=>{this.updateComments()}}>
+                                            <View  >
+                                                <Text style={[{color:"#B71C1C"},{fontWeight:'bold'}]}>Cargar comentarios</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+    
+    
+                                   <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
+                                        <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar comentario" onChangeText={text => this.setState({commentHandler: text})} />
+                                        {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
+                                        <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress={()=>{this.props.addComment(this.props.selectItem.login.uuid, this.state.commentHandler.parse())}}>
+                                            <View style={styles.boton}>
+                                                <Text style={styles.botonText}>Comentar</Text>
+                                            </View>
+                                        </TouchableOpacity>
+    
+                                        
                                 </View>
-                            </View>
-
-                            <View style={styles.modalContent}>
-                                <Text style={styles.p}>Email: {this.props.selectItem.email}</Text>
-                                <Text style={styles.p}>País: {this.props.selectItem.location.country}</Text>
-                                <Text style={styles.p}>Ciudad: {this.props.selectItem.location.city}</Text>
-                                <Text style={styles.p}>Direccion: {this.props.selectItem.location.street.name}{this.props.selectItem.location.street.number}</Text>
-                                <Text style={styles.p}>Codigo postal: {this.props.selectItem.location.postcode}</Text>
-                                <Text style={styles.p}>Telefono: {this.props.selectItem.phone}</Text>
-                                <Text style={styles.p}>Celular: {this.props.selectItem.cell}</Text>
-                            </View>
-
-                            <View>
-                                <View style={[{display:'flex'},{flexDirection:'row'}, {justifyContent:'space-between'}]}>
-                                    <Text style={styles.commentH1}>Comentarios</Text> 
-                                    <TouchableOpacity style={{alignSelf: "center"}} onPress={()=>{this.updateComments()}}>
-                                        <View  >
-                                            <Text style={[{color:"#B71C1C"},{fontWeight:'bold'}]}>Cargar comentarios</Text>
-                                        </View>
-                                    </TouchableOpacity>
+                                
+                                
+                                <FlatList
+                                    data = { this.state.comments }
+                                    keyExtractor = { this.keyExtractor }
+                                    renderItem = { this.renderItem }
+                                    contentContainerStyle = {styles.listComments}
+                                />
+    
+     
+    
                                 </View>
-
-
-                               <View style={[{display:'flex'},{flexDirection:'row'}, {margin:14}, {justifyContent:"center"},{alignContent:'center'}]}>
-                                    <TextInput style={[styles.input,{flex:3},{marginEnd:15}]} placeholder="Ingresar comentario" onChangeText={text => this.setState({commentHandler: text})} />
-                                    {/* Este boton guarda la cantidad ingresada y luego ejecuta la funcion */}
-                                    <TouchableOpacity style={[{alignSelf: 'center'},{elevation:2}]} onPress={()=>{this.props.addComment(this.props.selectItem.login.uuid, this.state.commentHandler)}}>
-                                        <View style={styles.boton}>
-                                            <Text style={styles.botonText}>Comentar</Text>
-                                        </View>
+    
+    
+                                </>
+                                }
+                            </ScrollView>
+                        </View>
+                </Modal>
+        )}
+        else{
+            return(
+                <Modal visible= {this.state.edit} animationType= {"slide"} >
+                        <View style={styles.modalContainer}>
+                            <ScrollView style={styles.modal}>
+                                {this.props.selectItem && 
+                                
+                                <>
+                                <View style={[{justifyContent: "space-between"},{display: "flex"},{ flexDirection: "row"}]}>
+                                <TouchableOpacity style={[{alignSelf: 'flex-start'},{marginVertical:15}]}>
+                                    <View style={styles.textIconContainer}>
+                                        <Image style={[styles.icono,{marginRight:10}]} source={require('../src/Icons/Save.png')}/>
+                                        <Text style={styles.closeModal}>Guardar</Text>
+                                    </View>
+                                </TouchableOpacity>
+                                    <TouchableOpacity style={[{alignSelf: 'flex-end'},{marginVertical:15}]} onPress={ () => {this.props.showEdit(this.props.selectItem.login.uuid) }}>
+                                    <View style={styles.textIconContainer}>
+                                                <Text style={styles.closeModal}>Volver</Text>
+                                                <Image style={[styles.icono,{marginLeft:10}]} source={require('../src/Icons/Close.png')}/>
+    
+                                            </View>
                                     </TouchableOpacity>
-
-                                    
-                            </View>
-                            
-                            
-                            <FlatList
-                                data = { this.state.comments }
-                                keyExtractor = { this.keyExtractor }
-                                renderItem = { this.renderItem }
-                                contentContainerStyle = {styles.listComments}
-                            />
-
- 
-
-                            </View>
-
-
-                            </>
-                            }
-                        </ScrollView>
-                    </View>
-            </Modal>
-    )}
+    
+                                </View>
+    
+    
+                                <View style={styles.modalHeader}>
+                                    <Image style= {styles.modalImage} source={{uri: this.props.selectItem.picture.thumbnail}}/>
+                                    <View>
+                                        <Text style={styles.h1}> {this.props.selectItem.name.last}, {this.props.selectItem.name.first} </Text>
+                                        <Text style={styles.h1}> {this.props.selectItem.dob.age} Años </Text>
+    
+                                    </View>
+                                </View>
+    
+                                <View style={styles.modalContent}>
+                                    <TextInput placeholder={ this.props.selectItem.email} />
+                                    <TextInput placeholder={ this.props.selectItem.location.country } />
+                                    <TextInput placeholder={this.props.selectItem.location.city } />
+                                    <TextInput placeholder={ this.props.selectItem.location.street.name, this.props.selectItem.location.street.number } />
+                                    <TextInput placeholder={this.props.selectItem.location.postcode} />
+                                    <TextInput placeholder={this.props.selectItem.phone} />
+                                    <TextInput placeholder={this.props.selectItem.cell} />
+                                </View>
+    
+                                </>
+                                }
+                            </ScrollView>
+                        </View>
+                </Modal>
+        )}
+}
 }
