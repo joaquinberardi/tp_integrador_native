@@ -85,7 +85,7 @@ export class PapeleraDeReciclaje extends Component {
                 <TouchableOpacity  style={[styles.botonGuardarContactos,{justifyContent:"flex-end"}]} onPress={() => {this.emptyBin()}}>
                         <View style={styles.textIconContainer}>
                             <Text style={[{alignSelf: 'center'}, {justifyContent: 'center'},styles.botonText]}>Vaciar Papelera</Text>
-                            <Image style={styles.icono} source={require('../src/Icons/Synchronize.png')}/>
+                            <Image style={styles.icono} source={require('../src/Icons/Empty.png')}/>
                         </View>
                 </TouchableOpacity>
             </View>
