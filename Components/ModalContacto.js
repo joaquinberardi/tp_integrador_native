@@ -25,6 +25,17 @@ export class ModalContacto extends Component {
             commentHandler: "",
             comments: [],
             edit: false,
+
+            user: this.props.selectItem,
+
+            emailHandler: "",
+            countryHandler: "",
+            cityHandler: "",
+            streetHandler: "",
+            numberHandler: "",
+            postcodeHandler: "",
+            phoneHandler: "",
+            cellHandler: "",
         }
     }
 
@@ -168,15 +179,16 @@ export class ModalContacto extends Component {
                                 </View>
     
                                 <View style={styles.modalContent}>
-                                    <TextInput placeholder={ this.props.selectItem.email} />
-                                    <TextInput placeholder={ this.props.selectItem.location.country } />
-                                    <TextInput placeholder={this.props.selectItem.location.city } />
-                                    <TextInput placeholder={ this.props.selectItem.location.street.name, this.props.selectItem.location.street.number } />
-                                    <TextInput placeholder={this.props.selectItem.location.postcode} />
-                                    <TextInput placeholder={this.props.selectItem.phone} />
-                                    <TextInput placeholder={this.props.selectItem.cell} />
+                                    <TextInput defaultValue={ this.props.selectItem.email} onChangeText={text => this.setState({emailHandler: text})} />
+                                    <TextInput defaultValue={ this.props.selectItem.location.country } onChangeText={text => this.setState({countryHandler: text})} />
+                                    <TextInput defaultValue={this.props.selectItem.location.city } onChangeText={text => this.setState({cityHandler: text})} />
+                                    <TextInput defaultValue={ this.props.selectItem.location.street.name } onChangeText={text => this.setState({streetHandler: text})}/>
+                                    <TextInput defaultValue={ this.props.selectItem.location.street.number} onChangeText={text => this.setState({numberHandler: text})}/>
+                                    <TextInput defaultValue={this.props.selectItem.location.postcode} onChangeText={text => this.setState({postcodeHandler: text})}/>
+                                    <TextInput defaultValue={this.props.selectItem.phone} onChangeText={text => this.setState({phoneHandler: text})}/>
+                                    <TextInput defaultValue={this.props.selectItem.cell} onChangeText={text => this.setState({cellHandler: text})}/>
                                 </View>
-    
+                                
                                 </>
                                 }
                             </ScrollView>
