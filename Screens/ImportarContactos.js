@@ -100,7 +100,7 @@ export class ImportarContactos extends Component {
                 
             </ScrollView>
 
-            <ModalContacto selectItem={this.state.selectItem} modal={this.state.modal} closeModal={this.closeModal} allowEdit={false} />
+            <ModalContacto selectItem={this.state.selectItem} modal={this.state.modal} closeModal={this.closeModal} addComment={this.addComment} allowEdit={false} />
             
             {/* Esta boton debe guardar los contactos que traemos de la API */}
             <View style={[{backgroundColor:"transparent"},{position:"absolute"},{bottom:10},{alignSelf: "center"}]}>
