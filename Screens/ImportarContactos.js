@@ -31,6 +31,7 @@ export class ImportarContactos extends Component {
             selectItem: null,
             Modal: false,
             selectedItems: [],
+            activity: true,
         }
     }
 
