@@ -60,6 +60,13 @@ export class ImportarContactos extends Component {
         this.setState({users: users})
     }
 
+    addComment = (key,comment) => {
+        getLocal(key).then((comments) => {
+            comments = comments.concat(comment)
+            storeLocal(key, comments)
+        })
+    }
+
     keyExtractor= (item,idx) => idx.toString();
     
     showModal = (key) => {

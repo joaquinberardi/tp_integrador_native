@@ -36,6 +36,13 @@ export class PapeleraDeReciclaje extends Component {
         this.setState({modal: false})
     }
 
+    addComment = (key,comment) => {
+        getLocal(key).then((comments) => {
+            comments = comments.concat(comment)
+            storeLocal(key, comments)
+        })
+    }
+
     emptyBin = () => {
         this.setState({users: []})
         storeLocal('recycleBin', [])
