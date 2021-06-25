@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
      fontSize: 25,
      //labelStyle: {fontSize:30, fontWeight: 'bold'},
    },
+   drawerIcon:{
+    width:40,
+    height:40,
+   },
     input: {
       height: 60,
       borderRadius: 4,

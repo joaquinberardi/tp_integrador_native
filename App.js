@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Image } from 'react-native';
 import {styles} from './src/Styles';
 
 import 'react-native-gesture-handler';
@@ -19,17 +20,17 @@ class App extends Component {
         <Drawer.Navigator 
           drawerStyle={{
             backgroundColor: '#FAFAFA',
-            width: 300,
+            width: 380,
         }}
         drawerContentOptions={{
           activeTintColor: "#C62828",
           labelStyle: {fontSize:22, fontWeight: 'bold'}
         }}
         >
-          <Drawer.Screen name="Mis contactos" component={MisContactos} />
-          <Drawer.Screen name="Importar contactos" component={ImportarContactos} />
-          <Drawer.Screen name="Papelera de reciclaje" component={PapeleraDeReciclaje} />
-          <Drawer.Screen name="Acerca de" component={AcercaDe} />
+          <Drawer.Screen name="Mis contactos" component={MisContactos} options={{drawerIcon: (() => <Image style={styles.drawerIcon} source={require('./src/Icons/Contacts.png')} />)}}/>
+          <Drawer.Screen name="Importar contactos" component={ImportarContactos} options={{drawerIcon: (() => <Image style={styles.drawerIcon} source={require('./src/Icons/DownloadBlack.png')} />)}}/>
+          <Drawer.Screen name="Papelera de reciclaje" component={PapeleraDeReciclaje} options={{drawerIcon: (() => <Image style={styles.drawerIcon} source={require('./src/Icons/TrashCan.png')} />)}}/>
+          <Drawer.Screen name="Acerca de" component={AcercaDe} options={{drawerIcon: (() => <Image style={styles.drawerIcon} source={require('./src/Icons/Info.png')} />)}}/>
         </Drawer.Navigator>
       </NavigationContainer>
     )}}
